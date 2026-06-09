@@ -40,12 +40,12 @@ body{
   position:relative;overflow-x:hidden;
 }
 .bg-light{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.bg-light span{position:absolute;display:block;width:591px;height:1269px;transform:skewX(45deg);background:linear-gradient(#fff 0% 84%,transparent 100%)}
-.bg-light span:nth-child(1){top:-209px;left:20%;opacity:.08}
-.bg-light span:nth-child(2){top:-300px;left:45%;opacity:.05}
-.bg-light span:nth-child(3){top:-100px;left:65%;opacity:.04}
-.bg-light span:nth-child(4){top:-400px;left:80%;opacity:.03}
-.bg-light span:nth-child(5){top:-50px;left:5%;opacity:.02}
+.bg-light span{position:absolute;display:block;height:1269px;top:-209px;background:linear-gradient(#fff 0% 84%,transparent 100%);opacity:.4}
+.bg-light span:nth-child(1){width:591px;left:calc(33.6% - 295px);mask:linear-gradient(90deg,transparent 0%,#000 20%,#000 55%,rgba(0,0,0,.13) 67%,#000 78%,transparent 97%)}
+.bg-light span:nth-child(2){width:582px;left:calc(-1.5% - 291px);mask:linear-gradient(90deg,transparent 11%,#000 26%,rgba(0,0,0,.55) 42%,rgba(0,0,0,.13) 67%,#000 78%,transparent 97%)}
+.bg-light span:nth-child(3){width:520px;left:calc(60% - 260px);mask:linear-gradient(90deg,transparent 0%,#000 25%,#000 50%,rgba(0,0,0,.2) 65%,#000 80%,transparent 95%);opacity:.3}
+.bg-light span:nth-child(4){width:480px;left:calc(85% - 240px);mask:linear-gradient(90deg,transparent 5%,#000 22%,rgba(0,0,0,.4) 45%,#000 72%,transparent 98%);opacity:.25}
+.bg-light span:nth-child(5){width:440px;left:calc(10% - 220px);mask:linear-gradient(90deg,transparent 0%,#000 18%,#000 55%,rgba(0,0,0,.15) 70%,#000 82%,transparent 100%);opacity:.25}
 body::after{
   content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.09;
   background-image:url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23n)'/%3E%3C/svg%3E");
