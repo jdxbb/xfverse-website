@@ -1,0 +1,391 @@
+/* XFVerse — Section Layouts (matched to Hanzo) */
+
+/* ---- Base Section ---- */
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--section-padding) 48px;
+  position: relative;
+}
+
+.section-container {
+  width: 100%;
+  max-width: var(--content-max);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-container-wide {
+  width: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---- Section Header ---- */
+.sec-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-lg);
+  width: 100%;
+  margin-bottom: var(--gap-5xl);
+  text-align: center;
+}
+
+.sec-head .desc {
+  max-width: 520px;
+}
+
+/* Section header with Instrument Serif tag (Hanzo pattern) */
+.sec-tag {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
+.sec-tag::before,
+.sec-tag::after {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.sec-tag h4 {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+}
+
+/* ---- Grid Systems ---- */
+.grid-2 {
+  display: flex;
+  gap: var(--gap-xl);
+  width: 100%;
+}
+
+.grid-3 {
+  display: flex;
+  gap: var(--gap-md);
+  width: 100%;
+}
+
+.grid-4 {
+  display: flex;
+  gap: var(--gap-md);
+  width: 100%;
+}
+
+.grid-2 + .grid-2,
+.grid-3 + .grid-3,
+.grid-4 + .grid-4 {
+  margin-top: var(--gap-md);
+}
+
+/* ---- Intro / Services Section ---- */
+.intro-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+  justify-content: center;
+  width: 100%;
+}
+
+.intro-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  font-family: var(--font-serif);
+  font-size: var(--fs-body-sm);
+  font-style: italic;
+  color: var(--text);
+  background: var(--surface);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.intro-tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---- Process Section ---- */
+.process-grid {
+  display: flex;
+  gap: var(--gap-md);
+  width: 100%;
+}
+
+.step {
+  flex: 1 0 0;
+  min-width: 0;
+  background: var(--surface);
+  padding: 64px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-md);
+  border-radius: var(--radius-lg);
+  transition: background var(--duration-slow);
+}
+
+.step:hover {
+  background: var(--surface-hover);
+}
+
+.step-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  padding-bottom: 20px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+}
+
+.step p {
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+  line-height: var(--lh-loose);
+}
+
+/* ---- Benefits Grid ---- */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-md);
+  width: 100%;
+}
+
+.benefit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-sm);
+  padding: 24px;
+}
+
+.benefit-item h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.benefit-item p {
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+  line-height: var(--lh-loose);
+}
+
+/* ---- FAQ Section ---- */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  width: 100%;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: color var(--duration-fast);
+}
+
+.faq-q:hover {
+  color: var(--accent);
+}
+
+.faq-q .icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.faq-item.open .faq-q .icon {
+  background: var(--text);
+  color: var(--text-inverse);
+  border-color: var(--text);
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--duration-slow) var(--ease-out), padding var(--duration-slow) var(--ease-out);
+}
+
+.faq-item.open .faq-a {
+  max-height: 400px;
+  padding-bottom: 28px;
+}
+
+.faq-a p {
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+  line-height: var(--lh-loose);
+}
+
+/* ---- Pricing / Download Section ---- */
+.pricing-section {
+  position: relative;
+}
+
+.pricing-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(194, 133, 140, 0.04) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.pricing-card {
+  width: 100%;
+  max-width: 550px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 56px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-md);
+  text-align: center;
+  transition: border-color var(--duration-slow), box-shadow var(--duration-slow);
+}
+
+.pricing-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 80px var(--accent-subtle);
+}
+
+.pricing-card h3 {
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.pricing-card .platform {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+.pricing-meta {
+  margin-top: 24px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: var(--gap-xl);
+  width: 100%;
+  text-align: left;
+}
+
+.pricing-meta > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.pricing-meta .lbl {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.pricing-meta .val {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.75em;
+}
+
+/* ---- CTA Section ---- */
+.cta-section {
+  text-align: center;
+  gap: var(--gap-xl);
+}
+
+.cta-section h1 {
+  font-size: clamp(44px, 5.5vw, 72px);
+  font-weight: 300;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 809px) {
+  section {
+    padding: var(--section-padding-mobile) 24px;
+  }
+
+  .sec-head {
+    margin-bottom: var(--gap-3xl);
+  }
+
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .process-grid {
+    flex-direction: column;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pricing-card {
+    padding: 40px 28px;
+  }
+
+  .pricing-meta {
+    flex-direction: column;
+    gap: var(--gap-lg);
+  }
+
+  .hero-trust {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .step {
+    padding: 40px 28px 28px;
+  }
+}

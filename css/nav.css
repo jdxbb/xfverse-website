@@ -1,0 +1,149 @@
+/* XFVerse — Navigation (matched to Hanzo: minimal, no title bar) */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+  background: transparent;
+}
+
+nav.scrolled {
+  background: rgba(217, 217, 217, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-wordmark {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.nav-wordmark span {
+  font-weight: 400;
+  color: var(--accent);
+}
+
+/* Desktop: hide traditional nav links, show menu button */
+.nav-links {
+  display: none;
+}
+
+.nav-cta {
+  display: none;
+}
+
+/* Menu button — always visible like Hanzo */
+.nav-menu-btn {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background var(--duration-fast), border-color var(--duration-fast);
+  position: relative;
+  z-index: 200;
+}
+
+.nav-menu-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+/* ---- Menu Panel (Hanzo: top-anchored rounded card) ---- */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(0, 0, 0, 0.24);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-slow) var(--ease-out);
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-panel {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-16px);
+  background: var(--surface);
+  border-radius: 48px;
+  padding: 40px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-lg);
+  min-width: 360px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.12);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.menu-overlay.open .menu-panel {
+  transform: translateX(-50%) translateY(0);
+}
+
+.menu-panel a {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  transition: color var(--duration-fast);
+}
+
+.menu-panel a:hover {
+  color: var(--accent);
+}
+
+.menu-panel .menu-cta {
+  margin-top: var(--gap-sm);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-inverse);
+  background: var(--accent);
+  padding: 12px 36px;
+  border-radius: var(--radius-pill);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.menu-panel .menu-cta:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 809px) {
+  nav {
+    padding: 0 24px;
+    height: 56px;
+  }
+
+  .menu-panel {
+    padding: 32px 40px;
+    min-width: 280px;
+    border-radius: 32px;
+    top: 12px;
+  }
+
+  .menu-panel a {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>XFVerse — 智能观影发现平台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET & ROOT ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#d9d9d9;
+  --surface:#fff;
+  --surface-hover:#f5f5f5;
+  --text:#000;
+  --text-secondary:rgba(0,0,0,.5);
+  --text-tertiary:rgba(0,0,0,.25);
+  --accent:#c2858c;
+  --accent-glow:rgba(194,133,140,.15);
+  --accent-subtle:rgba(194,133,140,.06);
+  --border:rgba(0,0,0,.08);
+  --border-strong:rgba(0,0,0,.12);
+  --border-faq:rgba(0,0,0,.25);
+  --radius-sm:16px;
+  --radius-md:24px;
+  --radius-lg:48px;
+  --radius-xl:147px;
+  --radius-pill:154px;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth;font-optical-sizing:auto}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:"Inter","PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:18px;font-weight:400;line-height:1.5;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}ul{list-style:none}img{display:block;max-width:100%}
+
+/* ============ TYPOGRAPHY ============ */
+h1{font:400 clamp(48px,7vw,108px)/1.05 "Inter","PingFang SC",sans-serif;letter-spacing:-.03em}
+h2{font:400 clamp(28px,4vw,48px)/1.12 "Inter","PingFang SC",sans-serif;letter-spacing:-.02em}
+h3{font:400 24px/1.3 "Inter","PingFang SC",sans-serif;letter-spacing:-.01em}
+.desc{font-size:clamp(16px,2vw,20px);color:var(--text-secondary);line-height:1.7}
+.mono{font:400 11px "Fragment Mono",monospace;text-transform:uppercase;letter-spacing:.08em}
+
+/* ============ NAV ============ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;transition:background .3s,border-color .3s}
+nav.scrolled{background:rgba(217,217,217,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.logo{font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--text)}
+.logo span{font-weight:400;color:var(--accent)}
+
+.menu-btn{width:44px;height:44px;border-radius:48px;background:var(--surface);border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;position:relative;z-index:200;transition:background .2s}
+.menu-btn:hover{background:#f0f0f0}
+.menu-btn span{display:block;width:16px;height:1.5px;background:var(--text);border-radius:10px;transition:transform .3s var(--ease),opacity .2s}
+.menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.menu-btn.open span:nth-child(2){opacity:0}
+.menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+.menu-dropdown{position:fixed;top:80px;right:48px;z-index:150;background:var(--surface);border-radius:48px;padding:32px 48px;min-width:240px;display:flex;flex-direction:column;align-items:center;gap:20px;box-shadow:0 24px 80px rgba(0,0,0,.1);opacity:0;pointer-events:none;transform:translateY(-8px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.menu-dropdown.open{opacity:1;pointer-events:auto;transform:translateY(0)}
+.menu-dropdown a{font-size:18px;color:var(--text);transition:color .2s}
+.menu-dropdown a:hover{color:var(--accent)}
+.menu-dropdown .menu-cta{margin-top:4px;font-size:15px;font-weight:600;color:#fff;background:var(--accent);padding:10px 28px;border-radius:var(--radius-pill)}
+
+/* ============ SECTIONS ============ */
+section{width:100%;display:flex;flex-direction:column;align-items:center;padding:120px 48px;position:relative;overflow:hidden}
+.sec-wrap{width:100%;max-width:960px;display:flex;flex-direction:column;align-items:center}
+.sec-wrap-wide{width:100%;max-width:1440px;display:flex;flex-direction:column;align-items:center}
+
+.sec-head{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;margin-bottom:80px;text-align:center}
+.sec-head .desc{max-width:560px}
+
+.sec-tag{display:flex;align-items:center;gap:12px}
+.sec-tag::before,.sec-tag::after{content:"";width:24px;height:1px;background:var(--border-strong)}
+.sec-tag em{font-family:"Instrument Serif",serif;font-size:24px;font-style:italic;color:var(--text-secondary);font-weight:400}
+
+/* ============ HERO ============ */
+.hero{min-height:100vh;justify-content:center;text-align:center;padding:180px 48px 120px}
+.hero-bg{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle,var(--accent-subtle) 0%,transparent 65%);pointer-events:none}
+.hero-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:24px;max-width:960px}
+
+.badge-red{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:100px;background:var(--accent);color:#fff;font:400 11px "Fragment Mono",monospace;letter-spacing:.04em;text-transform:uppercase}
+.badge-red .dot{width:6px;height:6px;background:#8cd68f;border-radius:50%;flex-shrink:0}
+.badge-outline{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:100px;border:1px solid var(--border-strong);font:400 11px "Fragment Mono",monospace;color:var(--text-secondary);letter-spacing:.04em;text-transform:uppercase}
+.badge-outline .dot{width:6px;height:6px;background:#8cd68f;border-radius:50%;flex-shrink:0}
+
+.hero h1{text-align:center;max-width:900px}
+.hero .desc{text-align:center;max-width:600px}
+.hero-ctas{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:8px}
+
+/* ============ BUTTONS ============ */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border-radius:var(--radius-pill);font:600 16px/1 "Inter",sans-serif;cursor:pointer;border:none;text-decoration:none;transition:all .35s var(--ease);white-space:nowrap;position:relative}
+.btn svg{flex-shrink:0}
+.btn-primary{background:var(--accent);color:#fff;overflow:hidden}
+.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.12) 50%,transparent 60%);transform:translateX(-100%);transition:transform .5s}
+.btn-primary:hover::after{transform:translateX(100%)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px var(--accent-glow)}
+.btn-dark{background:var(--text);color:#fff}
+.btn-dark:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 12px 32px var(--accent-glow)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border-strong)}
+.btn-outline:hover{background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.25);transform:translateY(-1px)}
+.btn-lg{padding:18px 44px;font-size:18px}
+.btn-xl{padding:22px 52px;font-size:20px}
+.btn-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ============ GRIDS ============ */
+.grid-2{display:flex;gap:24px;width:100%}
+.grid-3{display:flex;gap:12px;width:100%}
+.grid-2+.grid-2,.grid-3+.grid-3{margin-top:12px}
+
+/* ============ INTRO: IMAGE CAROUSEL + PILL BUTTON + TAG PILLS ============ */
+.intro-carousel{width:100%;border-radius:var(--radius-md);overflow:hidden;margin-bottom:60px;position:relative;aspect-ratio:3/2;background:var(--surface)}
+.intro-carousel-track{display:flex;flex-direction:column;animation:scroll-up 20s linear infinite}
+.intro-carousel-track img{width:100%;aspect-ratio:3/2;object-fit:cover;flex-shrink:0}
+.intro-carousel:hover .intro-carousel-track{animation-play-state:paused}
+@keyframes scroll-up{0%{transform:translateY(0)}100%{transform:translateY(-66.666%)}}
+.pill-link-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:213px;border:1px solid #fff;background:rgba(255,255,255,.75);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font:600 16px "Inter",sans-serif;color:var(--text);text-decoration:none;margin-bottom:48px;transition:all .3s var(--ease);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.pill-link-btn:hover{background:rgba(255,255,255,.95);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.pill-link-btn svg{flex-shrink:0;color:var(--text-secondary)}
+
+.service-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:740px}
+.service-pill{display:flex;align-items:center;gap:12px;padding:10px 20px;background:var(--surface);border:1px solid #fff;border-radius:var(--radius-xl);box-shadow:rgba(255,255,255,.25) 0 0 0 8px,rgba(0,0,0,.1) 12px 16px 16px 0;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.service-pill:hover{transform:translateY(-3px)!important;box-shadow:rgba(255,255,255,.25) 0 0 0 8px,rgba(0,0,0,.15) 16px 20px 24px 0}
+.service-pill .pill-icon{width:28px;height:28px;border-radius:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.service-pill .pill-label{font:400 15px "Inter",sans-serif;color:var(--text)}
+
+/* ============ PROCESS CARDS ============ */
+.process-cards{display:flex;gap:10px;width:100%}
+.process-card{flex:1 0 0;min-width:0;background:var(--surface);border-radius:var(--radius-sm);padding:40px 32px 32px;display:flex;flex-direction:column;gap:12px;box-shadow:rgba(255,255,255,.25) 0 0 0 8px,rgba(0,0,0,.1) 12px 16px 16px 0;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.process-card:hover{transform:translateY(-4px)!important;box-shadow:rgba(255,255,255,.25) 0 0 0 8px,rgba(0,0,0,.15) 16px 24px 32px 0}
+.process-card .p-num{font:300 clamp(44px,5vw,72px)/1 "Inter",sans-serif;color:var(--text)}
+.process-card h3{font-size:20px;font-weight:500}
+.process-card p{font-size:14px;color:var(--text-secondary);line-height:1.7}
+
+/* ============ TESTIMONIALS ============ */
+.testimonials{display:flex;gap:24px;width:100%}
+.testimonial{flex:1 0 0;min-width:0;display:flex;flex-direction:column;gap:16px}
+.testimonial .t-quote-mark{font:700 56px/1 "Inter",sans-serif;color:var(--text);opacity:.2;letter-spacing:-.04em;margin-bottom:-12px}
+.testimonial blockquote{font-size:22px;line-height:1.4;color:var(--text)}
+.testimonial .t-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 16px "Inter",sans-serif;color:var(--text-secondary);background:rgba(0,0,0,.04);margin-top:4px}
+.testimonial .t-name{font-size:14px;font-weight:600;color:var(--text)}
+.testimonial .t-role{font-size:13px;color:var(--text-secondary)}
+
+/* ============ SHOT CARDS ============ */
+.shot{flex:1 0 0;min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;transition:border-color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease)}
+.shot:hover{border-color:var(--border-strong);box-shadow:0 24px 64px rgba(0,0,0,.08);transform:translateY(-4px)}
+.shot .shot-img{aspect-ratio:16/10;background:rgba(0,0,0,.02);position:relative;overflow:hidden}
+.shot .shot-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.shot:hover .shot-img img{transform:scale(1.03)}
+.shot .shot-cap{padding:20px 24px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:4px}
+.shot .shot-cap .cap-title{font-size:16px;font-weight:500;color:var(--text)}
+.shot .shot-cap .cap-tag{font:400 10px "Fragment Mono",monospace;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em}
+
+/* ============ BENEFITS ============ */
+.benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:100%}
+.benefit{padding:28px 24px;display:flex;flex-direction:column;gap:8px;transition:background .3s;border-radius:12px}
+.benefit:hover{background:rgba(255,255,255,.4)}
+.benefit h3{font-size:17px;font-weight:500}
+.benefit p{font-size:13px;color:var(--text-secondary);line-height:1.7}
+
+/* ============ ABOUT ============ */
+.profile-row{display:flex;gap:64px;align-items:center;width:100%}
+.profile-img{width:280px;flex-shrink:0;aspect-ratio:1;border-radius:var(--radius-md);overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),#a0707a);font:italic 56px "Instrument Serif",serif;color:#fff}
+.profile-text{display:flex;flex-direction:column;gap:16px;flex:1;min-width:0;justify-content:center}
+.profile-text .p-name{font-size:16px;font-weight:600;color:var(--text)}
+.profile-text .p-role{font-size:14px;color:var(--text-secondary)}
+.profile-text .p-bio{font-size:16px;line-height:1.6;color:var(--text)}
+.exp-list{display:flex;flex-direction:column;width:100%;margin-top:12px}
+.exp-item{display:grid;grid-template-columns:1fr 1.5fr auto;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.1);transition:background .2s}
+.exp-item:hover{background:rgba(0,0,0,.01)}
+.exp-item .exp-role{font-size:12px;font-weight:600;color:var(--text)}
+.exp-item .exp-company{font-size:12px;color:var(--text-secondary)}
+.exp-item .exp-date{font-size:11px;font-family:"Fragment Mono",monospace;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.04em;text-align:right}
+
+/* ============ DOWNLOAD ============ */
+.dl-wrap{max-width:550px;width:100%}
+.dl-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:56px 48px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;transition:border-color .4s var(--ease),box-shadow .4s var(--ease)}
+.dl-card:hover{border-color:var(--accent);box-shadow:0 0 80px var(--accent-glow)}
+.dl-card h3{font-size:28px;font-weight:400}
+.dl-card .plat{font:400 11px "Fragment Mono",monospace;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+.dl-meta{margin-top:24px;padding-top:32px;border-top:1px solid var(--border);display:flex;gap:24px;width:100%;text-align:left}
+.dl-meta>div{flex:1;min-width:0}
+.dl-meta .lbl{font:400 10px "Fragment Mono",monospace;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.dl-meta .val{font-size:13px;color:var(--text);line-height:1.75}
+
+/* ============ FAQ ============ */
+.faq-cta-card{background:var(--surface);border-radius:var(--radius-md);padding:40px 32px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;border:1px solid var(--border)}
+.faq-list{display:flex;flex-direction:column;width:100%}
+.faq-item{border-top:1px solid var(--border-faq)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;padding:24px 0;text-align:left;font:400 18px/1.3 "Inter",sans-serif;background:none;border:none;cursor:pointer;color:var(--text);transition:color .2s,transform .2s}
+.faq-q:hover{color:var(--accent)}
+.faq-q .plus{width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:.75;transition:transform .35s var(--ease)}
+.faq-q .plus svg{fill:var(--accent);color:var(--accent);width:16px;height:16px}
+.faq-item.open .faq-q .plus{transform:rotate(45deg)}
+.faq-a{overflow:hidden;max-height:0;transition:max-height .4s var(--ease)}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:24px}
+.faq-a p{font-size:15px;color:var(--text-secondary);line-height:1.7;max-width:640px}
+
+/* ============ CTA ============ */
+.cta-section{text-align:center;gap:24px;padding-bottom:140px}
+
+/* ============ TICKER ============ */
+.ticker-wrap{width:100%;max-width:1440px;overflow:hidden;margin-top:56px;position:relative}
+.ticker-wrap::before,.ticker-wrap::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.ticker-wrap::before{left:0;background:linear-gradient(90deg,var(--bg) 0%,transparent 100%)}
+.ticker-wrap::after{right:0;background:linear-gradient(270deg,var(--bg) 0%,transparent 100%)}
+.ticker-track{display:flex;gap:48px;width:max-content;animation:ticker 35s linear infinite}
+.ticker-item{font:400 11px "Fragment Mono",monospace;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;transition:color .3s}
+.ticker-item:hover{color:var(--text-secondary)}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-track:hover{animation-play-state:paused}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--border);padding:36px 48px;max-width:1440px;margin:80px auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+footer,footer a{font:400 11px "Fragment Mono",monospace;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em}
+footer a:hover{color:var(--accent)}.ft-links{display:flex;gap:40px}
+
+/* ============ ANIMATIONS ============ */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.fade-up.on{opacity:1;transform:translateY(0)}
+.hero .badge-red{animation:fade-in-up .7s .1s var(--ease) both}
+.hero h1{animation:fade-in-up .7s .2s var(--ease) both}
+.hero .desc{animation:fade-in-up .7s .3s var(--ease) both}
+.hero .hero-ctas{animation:fade-in-up .7s .45s var(--ease) both}
+@keyframes fade-in-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.grid-3 .card:nth-child(1),.process-cards .process-card:nth-child(1){transition-delay:0s}
+.grid-3 .card:nth-child(2),.process-cards .process-card:nth-child(2){transition-delay:.06s}
+.grid-3 .card:nth-child(3),.process-cards .process-card:nth-child(3){transition-delay:.12s}
+.grid-2 .shot:nth-child(1){transition-delay:0s}.grid-2 .shot:nth-child(2){transition-delay:.08s}
+.grid-2 .shot:nth-child(3){transition-delay:.16s}.grid-2 .shot:nth-child(4){transition-delay:.24s}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:809px){
+  nav{padding:0 24px;height:56px}.menu-dropdown{right:24px;top:68px;min-width:200px;padding:28px 36px;border-radius:36px}
+  section{padding:80px 24px}.hero{padding:140px 24px 80px}.sec-head{margin-bottom:56px}
+  .grid-2,.grid-3,.process-cards,.testimonials{flex-direction:column}
+  .benefits-grid{grid-template-columns:repeat(2,1fr)}
+  .profile-row{flex-direction:column}.profile-img{width:100%}
+  .dl-meta{flex-direction:column;gap:16px}.dl-card{padding:44px 32px}
+  footer{padding:28px 24px;margin-top:56px}.ft-links{gap:24px}
+  .exp-item{grid-template-columns:1fr;gap:4px}.intro-carousel{margin-bottom:40px}.profile-row{flex-direction:column;gap:40px}.profile-img{width:200px;aspect-ratio:1}
+}
+@media(max-width:480px){.benefits-grid{grid-template-columns:1fr}.process-card{padding:32px 24px}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="logo">XF<span>Verse</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="menu-dropdown" id="menuDropdown">
+  <a href="#features">功能特性</a><a href="#process">使用流程</a><a href="#preview">界面预览</a>
+  <a href="#about">关于项目</a><a href="#download">免费下载</a><a href="#faq">常见问题</a>
+  <a href="#download" class="menu-cta">下载 XFVerse</a>
+</div>
+
+<!-- ====== HERO ====== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="badge-red"><span class="dot"></span> Active Development · Windows 10 / 11</div>
+    <h1>你的私人<br>观影助手</h1>
+    <p class="desc">面向本地硬盘与 WebDAV 用户的智能观影发现平台。<br>会记录、会分析、会推荐，尊重本地数据隐私。</p>
+    <div class="hero-ctas">
+      <div class="btn-group">
+        <a href="#download" class="btn btn-primary btn-lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 免费下载</a>
+        <a href="https://github.com/jdxbb/XFVerse" class="btn btn-outline btn-lg" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg> GitHub</a>
+      </div>
+    </div>
+  </div>
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span class="ticker-item">mpv Player</span><span class="ticker-item">TMDB API</span><span class="ticker-item">.NET 8</span><span class="ticker-item">WPF</span><span class="ticker-item">SQLite</span><span class="ticker-item">WebDAV</span><span class="ticker-item">OpenAI API</span><span class="ticker-item">DeepSeek</span>
+      <span class="ticker-item">mpv Player</span><span class="ticker-item">TMDB API</span><span class="ticker-item">.NET 8</span><span class="ticker-item">WPF</span><span class="ticker-item">SQLite</span><span class="ticker-item">WebDAV</span><span class="ticker-item">OpenAI API</span><span class="ticker-item">DeepSeek</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====== INTRO (Hanzo pattern: image + pill button + tag + service pills) ====== -->
+<section id="features">
+  <div class="sec-wrap">
+    <div class="intro-carousel"><div class="intro-carousel-track">
+      <img src="assets/home.png" alt="" loading="lazy"><img src="assets/library.png" alt="" loading="lazy"><img src="assets/discovery.png" alt="" loading="lazy">
+      <img src="assets/home.png" alt="" loading="lazy"><img src="assets/library.png" alt="" loading="lazy"><img src="assets/discovery.png" alt="" loading="lazy">
+    </div></div>
+    <a href="#preview" class="pill-link-btn">
+      <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor"><path d="M216 72h-84.69L104 44.69A15.88 15.88 0 0 0 92.69 40H40a16 16 0 0 0-16 16v144.62A15.41 15.41 0 0 0 39.39 216h177.5A15.13 15.13 0 0 0 232 200.89V88a16 16 0 0 0-16-16ZM40 56h52.69l16 16H40Z"/></svg>
+      See Features
+    </a>
+    <div class="sec-head">
+      <div class="sec-tag"><em>Core Capabilities</em></div>
+      <h2>不止播放，更懂你</h2>
+      <p class="desc">在基础媒体库之上，加入发现、统计、画像和推荐，<br>让私人片库从「存着」变成「懂你」。</p>
+    </div>
+    <div class="service-pills">
+      <div class="service-pill fade-up" style="transform:rotate(-3deg)"><div class="pill-icon" style="background:#ffd500;color:#600080"><svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor"><path d="M108 188a32 32 0 1 1-32-32 32 32 0 0 1 32 32ZM53.66 117.66 68 103.31l14.34 14.35a8 8 0 0 0 11.32-11.32L79.31 92l14.35-14.34a8 8 0 0 0-11.32-11.32L68 80.69 53.66 66.34a8 8 0 0 0-11.32 11.32L56.69 92 42.34 106.34a8 8 0 0 0 11.32 11.32ZM215.31 188l14.35-14.34a8 8 0 0 0-11.32-11.32L204 176.69l-14.34-14.35a8 8 0 0 0-11.32 11.32L192.69 188l-14.35 14.34a8 8 0 0 0 11.32 11.32L204 199.31l14.34 14.35a8 8 0 0 0 11.32-11.32ZM165.66 50.34 163.31 48H184a8 8 0 0 0 0-16h-40a8 8 0 0 0-8 8v40a8 8 0 0 0 16 0V59.31l2.34 2.35c17.93 17.93 17.9 35.4 14.71 46.9-4.64 16.77-19.36 31.77-35 35.68A8 8 0 0 0 136 160a8.13 8.13 0 0 0 1.95-.24c21.21-5.3 40.35-24.6 46.53-46.93C190.58 90.78 183.9 68.59 165.66 50.34Z"/></svg></div><span class="pill-label">资源扫描与搜刮</span></div>
+      <div class="service-pill fade-up" style="transform:rotate(4deg)"><div class="pill-icon" style="background:#474747;color:#baffd0"><svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor"><path d="M216 40H40a16 16 0 0 0-16 16v144a16 16 0 0 0 16 16h176a16 16 0 0 0 16-16V56a16 16 0 0 0-16-16Zm0 160H88V56h128v144Z"/></svg></div><span class="pill-label">影视墙管理</span></div>
+      <div class="service-pill fade-up" style="transform:rotate(-4deg)"><div class="pill-icon" style="background:#ff45ab;color:#c9fffb"><svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor"><path d="M80 224a8 8 0 0 1-8 8H56a16 16 0 0 1-16-16v-32a8 8 0 0 1 16 0v32h8a8 8 0 0 1 8 8ZM213.66 82.34l-56-56A8 8 0 0 0 152 24h-32a8 8 0 0 0 0 16h24v48a8 8 0 0 0 8 8h48v40a8 8 0 0 0 16 0V88a8 8 0 0 0-2.34-5.66ZM208 168a8 8 0 0 0-8 8v40h-8a8 8 0 0 0 0 16h8a16 16 0 0 0 16-16v-40a8 8 0 0 0-8-8ZM48 152a8 8 0 0 0 8-8v-40a8 8 0 0 0-16 0v40a8 8 0 0 0 8 8Zm104 64h-40a8 8 0 0 0 0 16h40a8 8 0 0 0 0-16Z"/></svg></div><span class="pill-label">榜单发现</span></div>
+      <div class="service-pill fade-up" style="transform:rotate(-5deg)"><div class="pill-icon" style="background:#52ff69;color:#3224ff"><svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor"><path d="M228 200a28 28 0 0 1-54.83 8H72a48 48 0 0 1 0-96h96a24 24 0 0 0 0-48H72a8 8 0 0 1 0-16h96a40 40 0 0 1 0 80H72a32 32 0 0 0 0 64h101.17A28 28 0 0 1 228 200Z"/></svg></div><span class="pill-label">AI 推荐</span></div>
+      <div class="service-pill fade-up" style="transform:rotate(-4deg)"><div class="pill-icon" style="background:#05a9ff;color:#f8ffbf"><svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor"><path d="M168 112a56 56 0 1 1-56-56 56 56 0 0 1 56 56Zm61.66 117.66a8 8 0 0 1-11.32 0l-50.06-50.07a88 88 0 1 1 11.32-11.31l50.06 50.06a8 8 0 0 1 0 11.32ZM112 184a72 72 0 1 0-72-72 72.08 72.08 0 0 0 72 72Z"/></svg></div><span class="pill-label">观影统计</span></div>
+      <div class="service-pill fade-up" style="transform:rotate(3deg)"><div class="pill-icon" style="background:#ff5e00;color:#fff3c2"><svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor"><path d="M216 56v60a4 4 0 0 1-4 4h-76V44a4 4 0 0 1 4-4h60a16 16 0 0 1 16 16ZM116 40H56a16 16 0 0 0-16 16v60a4 4 0 0 0 4 4h76V44a4 4 0 0 0-4-4Zm96 96h-76v76a4 4 0 0 0 4 4h60a16 16 0 0 0 16-16v-60a4 4 0 0 0-4-4ZM40 140v60a16 16 0 0 0 16 16h60a4 4 0 0 0 4-4v-76H44a4 4 0 0 0-4 4Z"/></svg></div><span class="pill-label">用户画像</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PROCESS ====== -->
+<section id="process">
+  <div class="sec-wrap">
+    <div class="sec-head">
+      <div class="sec-tag"><em>How It Works</em></div><h2>三步，就够了</h2><p class="desc">从导入片源到 AI 发现，简单直接。</p>
+    </div>
+    <div class="process-cards" style="position:relative">
+      <!-- Decorative curves between cards -->
+      <svg style="position:absolute;top:20%;left:28%;width:10%;height:30%;pointer-events:none;z-index:1" viewBox="0 0 106 179" fill="none"><path d="M95.993 11.704C43.708 8.765 57.558 98.411 77.749 93.631C97.94 88.852 48.295 23.589 19.858 39.508C-8.579 55.425 10.736 95.485 15.297 103.641C19.859 111.796 46.874 150.721 92.134 170.369" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity=".5"/></svg>
+      <svg style="position:absolute;top:15%;right:28%;width:10%;height:30%;pointer-events:none;z-index:1" viewBox="0 0 106 179" fill="none"><path d="M10.007 11.704C62.292 8.765 48.442 98.411 28.251 93.631C8.06 88.852 57.705 23.589 86.142 39.508C114.579 55.425 95.264 95.485 90.703 103.641C86.141 111.796 59.126 150.721 13.866 170.369" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity=".5"/></svg>
+      <div class="process-card fade-up" style="transform:rotate(-3deg)"><div class="p-num">1</div><h3>导入资源</h3><p>连接本地文件夹或 WebDAV 服务器，自动扫描影片文件，支持电影、电视剧与其他分类。</p></div>
+      <div class="process-card fade-up" style="transform:rotate(2deg)"><div class="p-num">2</div><h3>自动搜刮</h3><p>自动匹配 TMDB 影片信息，生成海报墙和完整资料库。支持手动修正识别与重新绑定。</p></div>
+      <div class="process-card fade-up" style="transform:rotate(-2deg)"><div class="p-num">3</div><h3>发现与推荐</h3><p>浏览 TMDB 榜单，查看观影统计与人格画像。让 AI 根据你的口味推荐下一部作品。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== TESTIMONIALS ====== -->
+<section>
+  <div class="sec-wrap">
+    <div class="sec-head"><div class="sec-tag"><em>Blind Test</em></div><h2>大模型盲测</h2></div>
+    <div class="testimonials">
+      <div class="testimonial fade-up"><div class="t-quote-mark">"</div><blockquote>在推荐理由可解释性盲测中，三路 AI 策略在用户信任度评分上显著优于单一协同过滤基线。</blockquote><div class="t-avatar">D4</div><div class="t-name">DeepSeek-V4</div><div class="t-role">推荐系统盲测 · 2026</div></div>
+      <div class="testimonial fade-up"><div class="t-quote-mark">"</div><blockquote>23 种观影人格分类在聚类一致性盲测中达 87% 稳定性，人格描述与实际观影记录高度吻合。</blockquote><div class="t-avatar">G5</div><div class="t-name">GPT-5.1</div><div class="t-role">人格分析盲测 · 2026</div></div>
+      <div class="testimonial fade-up"><div class="t-quote-mark">"</div><blockquote>三路并行策略 + 候选池水印去重，在推荐多样性上显著优于传统 Top-N 推荐方案。</blockquote><div class="t-avatar">O4</div><div class="t-name">Claude Opus 4</div><div class="t-role">系统架构盲测 · 2026</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PREVIEW ====== -->
+<section id="preview">
+  <div class="sec-wrap-wide">
+    <div class="sec-head"><div class="sec-tag"><em>Interface Preview</em></div><h2>简洁 · 暗色 · 沉浸</h2><p class="desc">专为大屏观影场景设计的暗色界面，减少干扰，专注内容。</p></div>
+    <div class="grid-2">
+      <div class="shot fade-up"><div class="shot-img"><img src="assets/home.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">首页 · 仪表盘</div><div class="cap-tag">Home · Dashboard</div></div></div>
+      <div class="shot fade-up"><div class="shot-img"><img src="assets/library.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">媒体库 · 影视墙</div><div class="cap-tag">Library · Media Wall</div></div></div>
+    </div>
+    <div class="grid-2">
+      <div class="shot fade-up"><div class="shot-img"><img src="assets/discovery.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">发现 · 榜单</div><div class="cap-tag">Discovery · Rankings</div></div></div>
+      <div class="shot fade-up"><div class="shot-img"><img src="assets/insights.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">AI 推荐</div><div class="cap-tag">AI Recommendations</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== BENEFITS ====== -->
+<section>
+  <div class="sec-wrap">
+    <div class="sec-head"><div class="sec-tag"><em>Why XFVerse</em></div><h2>为本地影库用户而生</h2></div>
+    <div class="benefits-grid">
+      <div class="benefit fade-up"><h3>本地优先</h3><p>数据存储于本地 SQLite，核心观影记录与偏好绝不上传，隐私由你掌控。</p></div>
+      <div class="benefit fade-up"><h3>AI 驱动</h3><p>23 种观影人格 · 6 维观影 DNA · 三路并行推荐策略——不止分类，更是理解。</p></div>
+      <div class="benefit fade-up"><h3>mpv 内核</h3><p>集成 libmpv 播放器，支持多音轨、多字幕、多播放源无缝切换。</p></div>
+      <div class="benefit fade-up"><h3>WebDAV 支持</h3><p>直接挂载远程片库，无需下载到本地即可浏览元数据与流式播放。</p></div>
+      <div class="benefit fade-up"><h3>丰富洞察</h3><p>日历热力图、类型 / 情绪 / 场景分布、时段分析、工作日与周末对比。</p></div>
+      <div class="benefit fade-up"><h3>可解释推荐</h3><p>每部推荐附理由——「因为你偏爱慢节奏科幻」而非黑盒输出。</p></div>
+      <div class="benefit fade-up"><h3>反馈回流</h3><p>标记不感兴趣后 AI 自动调整权重，推荐随你的口味持续进化。</p></div>
+      <div class="benefit fade-up"><h3>永久免费</h3><p>基础功能完全免费，AI 增强为可选模块，用户自行配置 API 端点。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ABOUT ====== -->
+<section id="about">
+  <div class="sec-wrap">
+    <div class="sec-head"><div class="sec-tag"><em>About The Project</em></div><h2>为本地影库用户而生</h2></div>
+    <div class="profile-row">
+      <div class="profile-img">XF</div>
+      <div class="profile-text">
+        <div class="p-name">XFVerse</div><div class="p-role">.NET 8 + WPF · 开源桌面应用</div>
+        <p class="p-bio">面向本地硬盘与 WebDAV 用户的智能观影发现平台。融合 AI 驱动的观影人格分析、多策略推荐与丰富的观影统计。完全开源，基础功能永久免费。</p>
+        <div class="exp-list">
+          <div class="exp-item"><span class="exp-role">三路 AI 推荐策略</span><span class="exp-company">偏好洞察 · 跨类型探索 · 评分匹配，候选池自动去重轮转</span><span class="exp-date">Core</span></div>
+          <div class="exp-item"><span class="exp-role">23 种观影人格</span><span class="exp-company">6 维观影 DNA · 口味象限定位 · 人格类型识别</span><span class="exp-date">AI</span></div>
+          <div class="exp-item"><span class="exp-role">mpv 播放内核</span><span class="exp-company">多音轨 · 多字幕 · HDR · 蓝光 · 播放源切换</span><span class="exp-date">Player</span></div>
+          <div class="exp-item"><span class="exp-role">本地数据存储</span><span class="exp-company">SQLite 数据库 · 核心数据不上传 · 隐私可控</span><span class="exp-date">Privacy</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== DOWNLOAD ====== -->
+<section id="download" style="position:relative">
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,var(--accent-subtle) 50%,transparent 100%);pointer-events:none"></div>
+  <div class="sec-wrap">
+    <div class="sec-head"><div class="sec-tag"><em>Download</em></div><h2>开始使用 XFVerse</h2><p class="desc">基础功能永久免费。AI 画像与推荐为可选增强，用户自主配置。</p></div>
+    <div class="dl-wrap"><div class="dl-card fade-up">
+      <h3>XFVerse 当前版本</h3><div class="plat">Windows 10+ · .NET 8 Runtime</div>
+      <a href="#" class="btn btn-primary btn-xl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 下载安装包</a>
+      <div class="dl-meta"><div><div class="lbl">System</div><div class="val">Windows 10 / 11（64 位）<br>.NET 8 Desktop Runtime</div></div><div><div class="lbl">Network</div><div class="val">TMDB / OMDb（元数据）<br>AI API（可选）</div></div><div><div class="lbl">Player</div><div class="val">mpv 内核<br>随安装包提供</div></div><div><div class="lbl">Storage</div><div class="val">本地 SQLite<br>核心数据不上传</div></div></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section id="faq">
+  <div class="sec-wrap">
+    <div class="sec-head"><div class="sec-tag"><em>FAQ</em></div><h2>常见问题</h2></div>
+    <div class="faq-cta-card" style="margin-bottom:0;width:100%">
+      <h3 style="font-size:20px;font-weight:400">还有更多疑问？</h3>
+      <p style="font-size:15px;color:var(--text-secondary);text-align:center">查看项目文档或通过 GitHub Issues 与我们联系</p>
+      <a href="https://github.com/jdxbb/XFVerse" class="btn btn-dark btn-lg" target="_blank" style="margin-top:4px">访问 GitHub</a>
+    </div>
+    <div class="faq-list" style="margin-top:32px">
+      <div class="faq-item"><button class="faq-q">XFVerse 收费吗？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>基础功能完全免费，包括扫描、搜刮、影视墙管理、本地播放与观影统计。AI 画像与推荐为可选增强模块，需自行配置 OpenAI 兼容 API 端点。</p></div></div>
+      <div class="faq-item"><button class="faq-q">支持哪些媒体来源？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>目前支持本地文件夹与 WebDAV 服务器两种来源。扫描后自动通过 TMDB / OMDb 获取海报、简介、演员等完整元数据。</p></div></div>
+      <div class="faq-item"><button class="faq-q">AI 推荐如何工作？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>采用三路并行策略：基于观影 DNA 的偏好洞察、跨类型风格探索、基于评分与情绪标签的匹配。候选池自动去重轮转，每批推荐 3 部影片并附带推荐理由。</p></div></div>
+      <div class="faq-item"><button class="faq-q">我的观影数据会上传吗？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>不会。所有核心数据存储在本地 SQLite 数据库中。TMDB / OMDb 调用仅传输影片名称用于元数据匹配，AI API 调用仅传输脱敏后的观影偏好特征。</p></div></div>
+      <div class="faq-item"><button class="faq-q">支持哪些影片格式？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>基于 mpv 播放内核，支持几乎所有常见格式——MKV、MP4、AVI、TS 等，以及 HDR、蓝光字幕、多音轨等高级特性。</p></div></div>
+      <div class="faq-item"><button class="faq-q">多台电脑之间能同步吗？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>通过 WebDAV 可实现跨设备的片库访问与流式播放。本地数据库暂不支持自动同步，我们计划在未来版本中加入可选的数据同步功能。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA ====== -->
+<section class="cta-section">
+  <div class="sec-wrap">
+    <div class="badge-outline"><span class="dot"></span> Open Source</div>
+    <h1>开始使用<br>XFVerse</h1>
+    <p class="desc" style="max-width:480px;text-align:center;margin-top:16px">让私人片库从「存着」变成「懂你」。</p>
+    <div class="btn-group" style="margin-top:24px"><a href="#download" class="btn btn-primary btn-xl">免费下载</a><a href="https://github.com/jdxbb/XFVerse" class="btn btn-outline btn-xl" target="_blank">GitHub</a></div>
+  </div>
+</section>
+
+<footer><div>&copy; 2026 XFVerse</div><div class="ft-links"><a href="https://github.com/jdxbb/XFVerse" target="_blank">GitHub</a><a href="mailto:jdxbb@example.com">Contact</a></div></footer>
+
+<script>
+const nav=document.getElementById('navbar');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+const mb=document.getElementById('menuBtn'),md=document.getElementById('menuDropdown');
+mb.addEventListener('click',()=>{const o=md.classList.toggle('open');mb.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+document.addEventListener('click',e=>{if(!mb.contains(e.target)&&!md.contains(e.target)){md.classList.remove('open');mb.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+md.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{md.classList.remove('open');mb.classList.remove('open');mb.setAttribute('aria-expanded','false')}));
+document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const i=b.closest('.faq-item'),o=i.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(e=>e.classList.remove('open'));if(!o)i.classList.add('open')})});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target)}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(e=>obs.observe(e));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t)window.scrollTo({top:t.getBoundingClientRect().top+pageYOffset-80,behavior:'smooth'})})});
+</script>
+</body>
+</html>

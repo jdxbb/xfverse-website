@@ -1,0 +1,262 @@
+/* XFVerse — Card Components (matched to Hanzo) */
+
+/* ---- Feature Card ---- */
+.card {
+  flex: 1 0 0;
+  min-width: 0;
+  background: var(--surface);
+  padding: 62px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-md);
+  border-radius: var(--radius-lg);
+  transition: background var(--duration-slow), transform var(--duration-slow) var(--ease-out);
+}
+
+.card:hover {
+  background: var(--surface-hover);
+  transform: translateY(-4px);
+}
+
+.card .card-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.card .card-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.card h3 {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.card p {
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+  line-height: var(--lh-loose);
+}
+
+/* ---- Project / Preview Card ---- */
+.shot {
+  flex: 1 0 0;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--duration-slow), box-shadow var(--duration-slow), transform var(--duration-slow) var(--ease-out);
+}
+
+.shot:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.shot .shot-img {
+  aspect-ratio: 16 / 10;
+  background: var(--surface-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  overflow: hidden;
+}
+
+.shot .shot-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shot .shot-cap {
+  padding: 20px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+}
+
+.shot .shot-cap .cap-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.shot .shot-cap .cap-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---- Testimonial Card ---- */
+.testimonial {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  padding: 0;
+}
+
+.testimonial blockquote {
+  font-family: var(--font-body);
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  line-height: var(--lh-normal);
+  color: var(--text);
+  quotes: none;
+}
+
+.testimonial blockquote::before {
+  content: open-quote;
+}
+
+.testimonial blockquote::after {
+  content: close-quote;
+}
+
+.testimonial cite {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.testimonial cite strong {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.testimonial cite span {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+}
+
+/* ---- About / Profile Card ---- */
+.profile-card {
+  display: flex;
+  gap: var(--gap-3xl);
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-name {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+
+.profile-role {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.profile-bio {
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+  line-height: var(--lh-loose);
+  margin-top: 8px;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  width: 100%;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gap-lg);
+  padding: 16px 0;
+}
+
+.timeline-item:not(:last-child) {
+  border-bottom: 1px solid var(--border);
+}
+
+.timeline-item .tl-role {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  font-weight: 500;
+  color: var(--text);
+  flex: 1;
+}
+
+.timeline-item .tl-company {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.timeline-item .tl-date {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+@media (max-width: 809px) {
+  .card {
+    padding: 40px 28px 28px;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    gap: var(--gap-xl);
+    align-items: center;
+    text-align: center;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    gap: var(--gap-xs);
+  }
+}

@@ -1,0 +1,153 @@
+/* XFVerse — Hero (matched to Hanzo hero structure) */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 180px 48px 120px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-bg-glow {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(
+    circle,
+    var(--accent-subtle) 0%,
+    transparent 65%
+  );
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-xl);
+  max-width: 960px;
+}
+
+/* Badge — Hanzo's "Booking Open" pill */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  padding: 6px 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: var(--gap-sm);
+}
+
+.hero-badge .dot {
+  width: 6px;
+  height: 6px;
+  background: #86c288;
+  border-radius: 50%;
+}
+
+.hero h1 {
+  text-align: center;
+  max-width: 900px;
+}
+
+.hero .desc {
+  text-align: center;
+  max-width: 600px;
+}
+
+/* Hero CTAs — Hanzo has 3 buttons stacked vertically */
+.hero-ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-lg);
+  margin-top: var(--gap-md);
+}
+
+.hero-ctas .btn-group {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-lg);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Social proof row under main CTA */
+.hero-trust {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.hero-trust a {
+  color: var(--text);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color var(--duration-fast);
+}
+
+.hero-trust a:hover {
+  color: var(--accent);
+}
+
+.hero-trust a::after {
+  content: "↗";
+  font-size: 10px;
+}
+
+.hero-scroll {
+  margin-top: var(--gap-4xl);
+  color: var(--text-tertiary);
+  transition: color var(--duration-fast);
+}
+
+.hero-scroll:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 809px) {
+  .hero {
+    padding: 120px 24px 80px;
+    min-height: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 8vw, 56px);
+  }
+
+  .hero-ctas .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-ctas .btn-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
