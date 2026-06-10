@@ -432,8 +432,6 @@ footer>*{position:relative;z-index:1}
 .docs-content{grid-area:1 / 1;justify-self:center;width:min(var(--docs-content-width),calc(100vw - var(--docs-gutter) * 2));min-width:0;max-width:var(--docs-content-width)}
 .docs-content section{padding:52px 40px;margin-bottom:60px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);box-shadow:0 4px 24px rgba(0,0,0,.04)}
 .docs-content section h2{text-align:left;width:100%}
-.docs-content section p,.docs-content section li,.docs-content section ul,.docs-content section ol{text-align:left;width:100%}
-.docs-content section .docs-note{text-align:left;width:100%}
 .docs-content section:first-of-type{border-top:1px solid var(--border);padding-top:52px}
 .docs-content h2{font:400 34px/1.2 "Inter Display","Inter","PingFang SC",sans-serif;margin:0 0 24px;letter-spacing:-.03em;color:var(--text)}
 
@@ -466,14 +464,14 @@ footer>*{position:relative;z-index:1}
   font-size: 18px;
 }
 .docs-content h3{font:500 18px/1.5 "Inter","PingFang SC",sans-serif;margin:36px 0 14px;color:var(--text);letter-spacing:-.01em}
-.docs-content p{font:400 16px/1.8 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);margin-bottom:18px}
+.docs-content p{font:400 16px/1.8 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);margin-bottom:18px;text-align:left;width:100%}
 .docs-content code{font:400 13px/1.5 "Fragment Mono",monospace;background:rgba(0,0,0,.06);padding:3px 8px;border-radius:5px;color:#b8472e}
 .docs-content pre{background:var(--surface);border-radius:16px;padding:24px 28px;overflow-x:auto;margin:22px 0;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.03)}
 .docs-content pre code{background:none;padding:0;font-size:13px;line-height:1.8;color:var(--text)}
-.docs-content ul,.docs-content ol{padding-left:24px;margin-bottom:18px}
-.docs-content li{font:400 15px/1.75 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);margin-bottom:8px}
+.docs-content ul,.docs-content ol{padding-left:24px;margin-bottom:18px;text-align:left;width:100%}
+.docs-content li{font:400 16px/1.8 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);margin-bottom:8px}
 .docs-content li::marker{color:var(--accent);font-weight:600}
-.docs-content .docs-note{background:var(--accent-subtle);border-left:3px solid var(--accent);padding:18px 22px;border-radius:0 14px 14px 0;margin:28px 0;font:400 14px/1.7 "Inter","PingFang SC",sans-serif;color:var(--text)}
+.docs-content .docs-note{background:var(--accent-subtle);border-left:3px solid var(--accent);padding:18px 22px;border-radius:0 14px 14px 0;margin:28px 0;font:400 16px/1.8 "Inter","PingFang SC",sans-serif;color:var(--text);text-align:left;width:100%}
 .docs-content a{color:var(--accent);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(194,133,140,.25);transition:border-color .15s}
 .docs-content a:hover{color:var(--text);border-bottom-color:var(--text)}
 @media(min-width:810px) and (max-width:1279px){.docs-page{display:flex;gap:40px;width:100%;max-width:none;margin:72px 0 100px;padding:0 var(--docs-gutter)}.docs-sidebar{grid-area:auto;justify-self:auto;margin-left:0;width:208px}.docs-content{grid-area:auto;justify-self:auto;flex:1;width:100%;max-width:720px;margin:0 auto}}
