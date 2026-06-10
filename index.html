@@ -142,15 +142,17 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .grid-2+.grid-2,.grid-3+.grid-3{margin-top:10px}
 
 /* ============ INTRO: IMAGE CAROUSEL + TAG + PILLS + PILL BTN (Hanzo order) ============ */
-/* ---- Carousel (Hanzo: 2 side-by-side UL columns, vertical scroll, dark bg + vignette) ---- */
+/* ---- Carousel (Hanzo exact: 2 UL columns, each in <section>, dark bg + vignette) ---- */
 .intro-carousel{display:flex;gap:24px;width:100%;max-width:1440px;border-radius:var(--radius-md);overflow:hidden;margin-bottom:48px;position:relative;background:#0B0B0D;height:560px;place-items:center}
 .intro-carousel::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.35) 100%);border-radius:inherit}
-.intro-carousel-col{flex:1;min-width:0;overflow:hidden;position:relative;z-index:1;height:100%}
-.intro-carousel-col ul{display:flex;flex-direction:column;gap:24px;margin:0;padding:0;list-style:none;animation:scroll-up 40s linear infinite;will-change:transform}
-.intro-carousel-col ul:hover{animation-play-state:paused}
-.intro-carousel-col li{width:100%;flex-shrink:0;position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden}
-.intro-carousel-col li img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center}
-@keyframes scroll-up{0%{transform:translateY(0)}100%{transform:translateY(calc(-33.333% - 16px))}}
+.intro-carousel section{flex:1;min-width:0;overflow:hidden;position:relative;z-index:1;height:100%;display:flex;place-items:center}
+.intro-carousel ul{display:flex;flex-direction:column;gap:24px;width:100%;margin:0;padding:0;list-style:none;animation:scroll-up 40s linear infinite;will-change:transform}
+.intro-carousel ul:hover{animation-play-state:paused}
+.intro-carousel li{width:100%;flex-shrink:0}
+.intro-carousel .carousel-img{width:100%;flex-shrink:0;position:relative;aspect-ratio:4/3}
+.intro-carousel .carousel-img div{position:absolute;border-radius:inherit;inset:0}
+.intro-carousel .carousel-img img{display:block;width:100%;height:100%;border-radius:inherit;object-position:center;object-fit:cover}
+@keyframes scroll-up{0%{transform:translateY(0)}100%{transform:translateY(calc(-50% - 12px))}}
 
 .pill-link-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:213px;border:1px solid #fff;background:rgba(255,255,255,.75);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font:600 16px "Inter",sans-serif;color:var(--text);text-decoration:none;margin-top:48px;transition:all .3s var(--ease);box-shadow:0 2px 12px rgba(0,0,0,.04)}
 .pill-link-btn:hover{background:rgba(255,255,255,.95);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
@@ -381,30 +383,36 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
 <section id="features">
   <div class="sec-wrap-wide">
 
-    <!-- Carousel (Hanzo exact: 2 UL columns, side by side, vertical scroll) -->
+    <!-- Carousel (Hanzo: 2 <section> columns, each with <ul>, 12 li) -->
     <div class="intro-carousel">
-      <div class="intro-carousel-col"><ul>
-        <li><img src="https://framerusercontent.com/images/670uUrkwoRnzhCl9b3kEMwUmgE4.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/J4Ox47KYv4g8Lb2C0PXNkjDaA.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/wo0P2ApHuac8yCSOoIU4GYSCkOc.png?width=1600&height=1200" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/670uUrkwoRnzhCl9b3kEMwUmgE4.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/J4Ox47KYv4g8Lb2C0PXNkjDaA.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/wo0P2ApHuac8yCSOoIU4GYSCkOc.png?width=1600&height=1200" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/670uUrkwoRnzhCl9b3kEMwUmgE4.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/J4Ox47KYv4g8Lb2C0PXNkjDaA.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/wo0P2ApHuac8yCSOoIU4GYSCkOc.png?width=1600&height=1200" alt="" loading="lazy"></li>
-      </ul></div>
-      <div class="intro-carousel-col"><ul>
-        <li><img src="https://framerusercontent.com/images/9nNEv94U4EwW3ZkcswuOBMt2jk.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/cpbJvQoTTkomFOd8RSNsHF3b8.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/TWgBR6dpy8VfcVcGIy2oyBYzyY.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/9nNEv94U4EwW3ZkcswuOBMt2jk.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/cpbJvQoTTkomFOd8RSNsHF3b8.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/TWgBR6dpy8VfcVcGIy2oyBYzyY.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/9nNEv94U4EwW3ZkcswuOBMt2jk.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/cpbJvQoTTkomFOd8RSNsHF3b8.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-        <li><img src="https://framerusercontent.com/images/TWgBR6dpy8VfcVcGIy2oyBYzyY.jpg?width=1120&height=840" alt="" loading="lazy"></li>
-      </ul></div>
+      <section><ul>
+        <li><div class="carousel-img"><div><img src="https://framerusercontent.com/images/670uUrkwoRnzhCl9b3kEMwUmgE4.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li><div class="carousel-img"><div><img src="https://framerusercontent.com/images/J4Ox47KYv4g8Lb2C0PXNkjDaA.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li><div class="carousel-img"><div><img src="https://framerusercontent.com/images/wo0P2ApHuac8yCSOoIU4GYSCkOc.png?width=1600&height=1200" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/670uUrkwoRnzhCl9b3kEMwUmgE4.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/J4Ox47KYv4g8Lb2C0PXNkjDaA.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/wo0P2ApHuac8yCSOoIU4GYSCkOc.png?width=1600&height=1200" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/670uUrkwoRnzhCl9b3kEMwUmgE4.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/J4Ox47KYv4g8Lb2C0PXNkjDaA.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/wo0P2ApHuac8yCSOoIU4GYSCkOc.png?width=1600&height=1200" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/670uUrkwoRnzhCl9b3kEMwUmgE4.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/J4Ox47KYv4g8Lb2C0PXNkjDaA.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/wo0P2ApHuac8yCSOoIU4GYSCkOc.png?width=1600&height=1200" alt="" loading="lazy"></div></div></li>
+      </ul></section>
+      <section><ul>
+        <li><div class="carousel-img"><div><img src="https://framerusercontent.com/images/9nNEv94U4EwW3ZkcswuOBMt2jk.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li><div class="carousel-img"><div><img src="https://framerusercontent.com/images/cpbJvQoTTkomFOd8RSNsHF3b8.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li><div class="carousel-img"><div><img src="https://framerusercontent.com/images/TWgBR6dpy8VfcVcGIy2oyBYzyY.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/9nNEv94U4EwW3ZkcswuOBMt2jk.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/cpbJvQoTTkomFOd8RSNsHF3b8.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/TWgBR6dpy8VfcVcGIy2oyBYzyY.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/9nNEv94U4EwW3ZkcswuOBMt2jk.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/cpbJvQoTTkomFOd8RSNsHF3b8.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/TWgBR6dpy8VfcVcGIy2oyBYzyY.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/9nNEv94U4EwW3ZkcswuOBMt2jk.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/cpbJvQoTTkomFOd8RSNsHF3b8.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+        <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/TWgBR6dpy8VfcVcGIy2oyBYzyY.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
+      </ul></section>
     </div>
   </div>
   <div class="sec-wrap">
