@@ -107,7 +107,7 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .sec-tag em{font-family:"Instrument Serif",serif;font-size:24px;font-style:italic;color:var(--text-secondary);font-weight:400}
 
 /* ============ HERO (Hanzo pattern: slideshow + heading + ticker + desc + CTA) ============ */
-.hero{min-height:100vh;justify-content:center;text-align:center;padding:180px 48px 80px}
+.hero{min-height:100vh;justify-content:center;text-align:center;padding:160px 48px 100px}
 .hero-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:24px;max-width:960px}
 
 /* Hero slideshow (Hanzo: 400x300 images, horizontal 3D carousel) */
@@ -265,7 +265,9 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .trusted-item:hover{color:var(--text-secondary)}
 
 /* ============ FOOTER (Hanzo: CTA + social links + wordmark + copyright) ============ */
-footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440px;margin:80px auto 0;display:flex;flex-direction:column;align-items:center;gap:40px}
+footer{border-top:1px solid var(--border);padding:100px 48px 36px;max-width:1440px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:48px;position:relative}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:400px;background:linear-gradient(180deg,transparent 0%,rgba(255,255,255,.3) 50%,transparent 100%);pointer-events:none;z-index:0}
+footer>*{position:relative;z-index:1}
 .footer-cta{text-align:center;max-width:600px;display:flex;flex-direction:column;align-items:center;gap:20px}
 .footer-cta h2{font-size:clamp(32px,4vw,48px)}
 .footer-cta .badge-mono{font:400 10px "Fragment Mono",monospace;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em}
