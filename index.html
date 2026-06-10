@@ -175,10 +175,10 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .process-card h3{font-size:20px;font-weight:500}
 .process-card p{font-size:14px;color:var(--text-secondary);line-height:1.7}
 
-/* Process connectors (Hanzo: thin rotated line elements between cards) */
-.process-connector{flex-shrink:0;width:48px;height:2px;align-self:center;background:var(--accent);border-radius:100px;opacity:.5;margin:0 -16px;z-index:1;position:relative}
-.process-connector:first-of-type{transform:rotate(-18deg)}
-.process-connector:last-of-type{transform:rotate(34deg)}
+/* Process connectors (Hanzo: ultra-thin rotated accent lines) */
+.process-connector{flex-shrink:0;width:36px;height:1.5px;align-self:center;background:var(--accent);border-radius:100px;opacity:.45;margin:0 -12px;z-index:1;position:relative}
+.process-connector:first-of-type{transform:rotate(-15deg)}
+.process-connector:last-of-type{transform:rotate(30deg)}
 
 /* ============ TESTIMONIALS (Hanzo: 2 cards, no quote mark icon) ============ */
 .testimonials{display:flex;gap:24px;width:100%}
@@ -224,9 +224,9 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .dl-wrap{max-width:550px;width:100%}
 .dl-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:56px 48px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;transition:border-color .4s var(--ease),box-shadow .4s var(--ease);position:relative}
 .dl-card:hover{border-color:var(--accent);box-shadow:0 0 80px var(--accent-glow)}
-.dl-card .price{font:300 72px/1 "Inter","PingFang SC",sans-serif;color:var(--text);letter-spacing:-.03em}
-.dl-card .period{font:400 16px "Inter",sans-serif;color:var(--text-secondary);margin-top:-8px}
-.dl-card .dl-badge{display:inline-flex;align-items:center;gap:8px;padding:4px 14px;border-radius:100px;background:var(--accent);color:#fff;font:400 10px "Fragment Mono",monospace;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+.dl-card .price{font:300 80px/1 "Inter","PingFang SC",sans-serif;color:var(--text);letter-spacing:-.04em}
+.dl-card .period{font:400 16px "Inter",sans-serif;color:var(--text-secondary);margin-top:-12px}
+.dl-card .dl-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:100px;background:var(--accent);color:#fff;font:400 10px "Fragment Mono",monospace;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
 .dl-meta{margin-top:24px;padding-top:32px;border-top:1px solid var(--border);display:flex;gap:24px;width:100%;text-align:left}
 .dl-meta>div{flex:1;min-width:0}
 .dl-meta .lbl{font:400 10px "Fragment Mono",monospace;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
