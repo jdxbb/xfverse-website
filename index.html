@@ -142,10 +142,11 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .grid-2+.grid-2,.grid-3+.grid-3{margin-top:10px}
 
 /* ============ INTRO: IMAGE CAROUSEL + TAG + PILLS + PILL BTN (Hanzo order) ============ */
-.intro-carousel{width:100%;max-width:1440px;border-radius:var(--radius-md);overflow:hidden;margin-bottom:48px;position:relative;background:var(--surface)}
-.intro-carousel-track{display:grid;grid-template-columns:1fr 1fr;gap:24px;animation:scroll-up 30s linear infinite;will-change:transform}
-.intro-carousel-track .carousel-img-wrap{border-radius:inherit;overflow:hidden}
-.intro-carousel-track .carousel-img-wrap img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;aspect-ratio:4/3}
+.intro-carousel{width:100%;max-width:1440px;height:560px;border-radius:var(--radius-md);overflow:hidden;margin-bottom:48px;position:relative;background:#0B0B0D}
+.intro-carousel::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.35) 100%);border-radius:inherit}
+.intro-carousel-track{display:grid;grid-template-columns:1fr 1fr;gap:24px;animation:scroll-up 30s linear infinite;will-change:transform;position:relative;z-index:1}
+.intro-carousel-track .carousel-img-wrap{border-radius:8px;overflow:hidden}
+.intro-carousel-track .carousel-img-wrap img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .intro-carousel:hover .intro-carousel-track{animation-play-state:paused}
 @keyframes scroll-up{0%{transform:translateY(0)}100%{transform:translateY(calc(-33.333% - 16px))}}
 
