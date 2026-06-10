@@ -363,11 +363,11 @@ footer>*{position:relative;z-index:1}
     </div>
 
     <!-- Trusted by (Hanzo: inside Hero, logo strip) -->
-    <div style="display:flex;gap:48px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:8px">
-      <span style="font:400 11px 'Fragment Mono',monospace;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.06em">Trusted by Leaders</span>
-      <span style="font:400 13px 'Inter',sans-serif;color:var(--text-tertiary)">TMDB</span>
-      <span style="font:400 13px 'Inter',sans-serif;color:var(--text-tertiary)">OpenAI</span>
-      <span style="font:400 13px 'Inter',sans-serif;color:var(--text-tertiary)">DeepSeek</span>
+    <div style="display:flex;gap:40px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:8px">
+      <span style="font:400 10px 'Fragment Mono',monospace;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.06em">Trusted by Leaders</span>
+      <span style="font:400 14px 'Inter',sans-serif;color:rgba(0,0,0,.3);letter-spacing:-.01em">TMDB</span>
+      <span style="font:400 14px 'Inter',sans-serif;color:rgba(0,0,0,.3);letter-spacing:-.01em">OpenAI</span>
+      <span style="font:400 14px 'Inter',sans-serif;color:rgba(0,0,0,.3);letter-spacing:-.01em">DeepSeek</span>
     </div>
 
     <p class="desc">面向本地硬盘与 WebDAV 用户的智能观影发现平台。<br>会记录、会分析、会推荐，尊重本地数据隐私。</p>
@@ -436,7 +436,7 @@ footer>*{position:relative;z-index:1}
     <!-- Pill link button (Hanzo: positioned after pills) -->
     <a href="#projects" class="pill-link-btn">
       <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor"><path d="M216 72h-84.69L104 44.69A15.88 15.88 0 0 0 92.69 40H40a16 16 0 0 0-16 16v144.62A15.41 15.41 0 0 0 39.39 216h177.5A15.13 15.13 0 0 0 232 200.89V88a16 16 0 0 0-16-16ZM40 56h52.69l16 16H40Z"/></svg>
-      See Features
+      查看界面预览
     </a>
   </div>
 </section>
@@ -478,14 +478,14 @@ footer>*{position:relative;z-index:1}
       <div class="testimonial fade-up">
         <blockquote>在推荐理由可解释性盲测中，三路 AI 策略在用户信任度评分上显著优于单一协同过滤基线。23 种观影人格分类在聚类一致性中达 87% 稳定性。</blockquote>
         <div style="display:flex;align-items:center;gap:12px;margin-top:4px">
-          <div class="t-avatar"><img src="assets/home.png" alt="" loading="lazy"></div>
+          <div class="t-avatar" style="background:linear-gradient(135deg,#4F46E5,#7C3AED);display:flex;align-items:center;justify-content:center;font:600 18px 'Inter',sans-serif;color:#fff">D</div>
           <div><div class="t-name">DeepSeek-V4</div><div class="t-role">推荐系统 + 人格分析盲测 · 2026</div></div>
         </div>
       </div>
       <div class="testimonial fade-up">
         <blockquote>三路并行策略 + 候选池水印去重，在推荐多样性上显著优于传统 Top-N 推荐方案。推荐附带可解释理由，而非黑盒输出。</blockquote>
         <div style="display:flex;align-items:center;gap:12px;margin-top:4px">
-          <div class="t-avatar"><img src="assets/library.png" alt="" loading="lazy"></div>
+          <div class="t-avatar" style="background:linear-gradient(135deg,#DA7756,#C44B2A);display:flex;align-items:center;justify-content:center;font:600 18px 'Inter',sans-serif;color:#fff">C</div>
           <div><div class="t-name">Claude Opus 4</div><div class="t-role">系统架构 + 可解释性盲测 · 2026</div></div>
         </div>
       </div>
@@ -496,7 +496,7 @@ footer>*{position:relative;z-index:1}
 <!-- ====== PROJECTS (Hanzo "Our Projects": 4 portfolio cards with images) ====== -->
 <section id="projects">
   <div class="sec-wrap-wide">
-    <div class="sec-head"><div class="sec-tag"><em>Interface Preview</em></div><h2>浅色 / 深色双主题</h2><p class="desc">液态玻璃风格界面，支持浅色与暗色双主题切换。覆盖媒体库、榜单发现、AI 推荐、观影统计等完整功能。</p></div>
+    <div class="sec-head"><div class="sec-tag"><em>Our Projects</em></div><h2>界面预览</h2><p class="desc">液态玻璃风格，浅色与暗色双主题。覆盖媒体库、榜单发现、AI 推荐、观影统计等完整功能。</p></div>
     <div class="grid-2">
       <div class="shot fade-up"><div class="shot-img"><img src="assets/home.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">首页 · 仪表盘</div><div class="cap-tag">Home · Dashboard</div></div></div>
       <div class="shot fade-up"><div class="shot-img"><img src="assets/library.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">媒体库 · 影视墙</div><div class="cap-tag">Library · Media Wall</div></div></div>
@@ -540,12 +540,13 @@ footer>*{position:relative;z-index:1}
 <section id="download" style="position:relative">
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,var(--accent-subtle) 50%,transparent 100%);pointer-events:none"></div>
   <div class="sec-wrap">
-    <div class="sec-head"><div class="sec-tag"><em>Download</em></div><h2>开始使用 XFVerse</h2><p class="desc">基础功能永久免费。AI 画像与推荐为可选增强，用户自主配置 API 端点。</p></div>
+    <div class="sec-head"><div class="sec-tag"><em>Pricing</em></div><h2>免费开源，功能完整</h2><p class="desc">基础功能永久免费。AI 画像与推荐为可选增强，用户自主配置 API 端点。</p></div>
     <div class="dl-wrap"><div class="dl-card fade-up">
       <div class="dl-badge"><span style="display:inline-block;width:5px;height:5px;background:#8cd68f;border-radius:50%"></span> Available Now</div>
       <div class="price">免费</div>
       <div class="period">基础功能永久免费 · AI 模块可选</div>
-      <a href="#" class="btn btn-primary btn-xl" style="margin-top:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 下载安装包</a>
+      <a href="#" class="btn btn-primary btn-xl" style="margin-top:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 下载 XFVerse</a>
+      <div style="font:400 10px 'Fragment Mono',monospace;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.06em;margin-top:16px">What's included</div>
       <ul class="dl-features">
         <li>本地 SQLite 数据存储，隐私可控</li>
         <li>mpv 播放内核，全格式支持</li>
@@ -555,12 +556,6 @@ footer>*{position:relative;z-index:1}
         <li>WebDAV 远程片库挂载</li>
         <li>浅色 / 深色双主题界面</li>
       </ul>
-      <div class="dl-meta">
-        <div><div class="lbl">System</div><div class="val">Windows 10 / 11（64 位）<br>.NET 8 Desktop Runtime</div></div>
-        <div><div class="lbl">Network</div><div class="val">TMDB / OMDb（元数据）<br>AI API（可选）</div></div>
-        <div><div class="lbl">Player</div><div class="val">mpv 内核<br>随安装包提供</div></div>
-        <div><div class="lbl">Storage</div><div class="val">本地 SQLite<br>核心数据不上传</div></div>
-      </div>
     </div></div>
   </div>
 </section>
