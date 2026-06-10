@@ -417,13 +417,22 @@ footer>*{position:relative;z-index:1}
 .docs-page{display:flex;gap:72px;max-width:1200px;margin:72px auto 100px;padding:0 48px;min-height:60vh}
 .docs-sidebar{width:224px;flex-shrink:0;position:sticky;top:96px;align-self:flex-start;display:flex;flex-direction:column;gap:1px}
 .docs-sidebar-title{font:600 13px/1 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em;padding:0 12px 20px;margin-bottom:0}
-.docs-sidebar a{display:flex;align-items:center;gap:8px;padding:9px 12px;font:400 14px/1 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);border-radius:10px;transition:all .18s;text-decoration:none;position:relative}
+.docs-sidebar a{display:flex;align-items:center;gap:8px;padding:9px 12px;font:400 14px/1 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);border-radius:10px;transition:all .18s;text-decoration:none;position:relative;cursor:pointer}
 .docs-sidebar a::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:0;transition:opacity .18s;flex-shrink:0}
 .docs-sidebar a:hover{color:var(--text);background:rgba(0,0,0,.03)}
 .docs-sidebar a.active{color:var(--text);background:var(--surface);font-weight:500;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .docs-sidebar a.active::before{opacity:1}
+/* Sub-nav toggle */
+.docs-sidebar .docs-nav-parent{font-weight:500;color:var(--text)}
+.docs-sidebar .docs-nav-parent::after{content:"+";margin-left:auto;font-size:14px;color:var(--text-tertiary);transition:transform .2s}
+.docs-sidebar .docs-nav-parent.open::after{content:"−";transform:rotate(0)}
+.docs-nav-children{display:none;flex-direction:column;padding-left:20px;gap:0}
+.docs-nav-children.open{display:flex}
+.docs-nav-children a{font-size:13px;padding:6px 12px}
 .docs-content{flex:1;min-width:0;max-width:720px}
-.docs-content section{padding:52px 40px;margin-bottom:60px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);box-shadow:0 4px 24px rgba(0,0,0,.04)}
+.docs-content section{padding:52px 40px;margin-bottom:60px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);box-shadow:0 4px 24px rgba(0,0,0,.04);align-items:flex-start;text-align:left}
+.docs-content section h2{text-align:left}
+.docs-content section h3{text-align:left}
 .docs-content section:first-of-type{border-top:1px solid var(--border);padding-top:52px}
 .docs-content h2{font:400 34px/1.2 "Inter Display","Inter","PingFang SC",sans-serif;margin:0 0 24px;letter-spacing:-.03em;color:var(--text)}
 
@@ -466,7 +475,7 @@ footer>*{position:relative;z-index:1}
 .docs-content .docs-note{background:var(--accent-subtle);border-left:3px solid var(--accent);padding:18px 22px;border-radius:0 14px 14px 0;margin:28px 0;font:400 14px/1.7 "Inter","PingFang SC",sans-serif;color:var(--text)}
 .docs-content a{color:var(--accent);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(194,133,140,.25);transition:border-color .15s}
 .docs-content a:hover{color:var(--text);border-bottom-color:var(--text)}
-@media(max-width:809px){section:first-of-type{padding:120px 24px 0!important}.docs-page{flex-direction:column;gap:40px;padding:0 24px;margin-top:40px}.docs-sidebar{position:static;width:100%;flex-direction:row;flex-wrap:wrap;gap:8px;overflow-x:auto;padding-bottom:20px;border-bottom:1px solid var(--border)}.docs-sidebar a{white-space:nowrap;font-size:13px;padding:6px 12px;border-radius:20px;border:1px solid var(--border)}.docs-sidebar a.active{border-color:var(--accent)}.docs-sidebar-title{display:none}.docs-sidebar a::before{display:none}.docs-content h2{font-size:26px}}
+@media(max-width:809px){section:first-of-type{padding:120px 24px 0!important}.docs-page{flex-direction:column;gap:40px;padding:0 24px;margin-top:40px}.docs-sidebar{position:static;width:100%;flex-direction:row;flex-wrap:wrap;gap:8px;overflow-x:auto;padding-bottom:20px;border-bottom:1px solid var(--border)}.docs-sidebar a{white-space:nowrap;font-size:13px;padding:6px 12px;border-radius:20px;border:1px solid var(--border)}.docs-sidebar a.active{border-color:var(--accent)}.docs-sidebar-title{display:none}.docs-sidebar a::before{display:none}.docs-nav-children{display:none!important}.docs-nav-parent::after{display:none}.docs-content h2{font-size:26px}}
 @media(max-width:809px){
   .docs-content section{
     padding:40px 24px;
@@ -522,14 +531,31 @@ footer>*{position:relative;z-index:1}
   <aside class="docs-sidebar">
     <div class="docs-sidebar-title">目录</div>
     <a href="#quickstart">快速开始</a>
-    <a href="#install">安装与环境</a>
-    <a href="#scan">扫描与搜刮</a>
+    <a href="#install" class="docs-nav-parent">安装与环境</a>
+    <div class="docs-nav-children">
+      <a href="#install-req">系统要求</a>
+      <a href="#install-net">网络依赖</a>
+    </div>
+    <a href="#scan" class="docs-nav-parent">扫描与搜刮</a>
+    <div class="docs-nav-children">
+      <a href="#scan-local">本地文件夹</a>
+      <a href="#scan-naming">文件命名</a>
+      <a href="#scan-fix">手动修正</a>
+    </div>
     <a href="#series">电视剧支持</a>
     <a href="#library">媒体库管理</a>
-    <a href="#discovery">发现与推荐</a>
+    <a href="#discovery" class="docs-nav-parent">发现与推荐</a>
+    <div class="docs-nav-children">
+      <a href="#disco-charts">榜单浏览</a>
+      <a href="#disco-ai">AI 推荐</a>
+    </div>
     <a href="#stats">观影统计</a>
     <a href="#webdav">WebDAV 配置</a>
-    <a href="#ai">AI 画像与推荐</a>
+    <a href="#ai" class="docs-nav-parent">AI 画像与推荐</a>
+    <div class="docs-nav-children">
+      <a href="#ai-persona">观影人格</a>
+      <a href="#ai-config">API 配置</a>
+    </div>
   </aside>
 
   <main class="docs-content">
@@ -677,8 +703,10 @@ document.querySelectorAll('.fade-up').forEach(e=>obs.observe(e));
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t)window.scrollTo({top:t.getBoundingClientRect().top+pageYOffset-80,behavior:'smooth'})})});
 
 
-// Docs sidebar scroll highlight
-document.querySelectorAll('.docs-sidebar a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+pageYOffset-100,behavior:'smooth'})})});
+// Docs sidebar — expand/collapse sub-nav
+document.querySelectorAll('.docs-nav-parent').forEach(function(p){p.addEventListener('click',function(e){e.preventDefault();this.classList.toggle('open');var n=this.nextElementSibling;if(n&&n.classList.contains('docs-nav-children'))n.classList.toggle('open')})});
+// Docs sidebar — smooth scroll
+document.querySelectorAll('.docs-sidebar a').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+pageYOffset-100,behavior:'smooth'})}})});
 </script>
 </body>
 </html>
