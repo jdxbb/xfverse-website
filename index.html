@@ -186,18 +186,31 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .service-pill .pill-icon{width:28px;height:28px;border-radius:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .service-pill .pill-label{font:400 15px "Inter",sans-serif;color:var(--text)}
 
-/* ============ PROCESS CARDS (Hanzo: 10px gap, rotated cards, decorative curves) ============ */
-.process-cards{display:flex;gap:10px;width:100%}
-.process-card{flex:1 0 0;min-width:0;background:var(--surface);border-radius:var(--radius-sm);padding:40px 32px 32px;display:flex;flex-direction:column;gap:12px;box-shadow:rgba(255,255,255,.25) 0 0 0 8px,rgba(0,0,0,.1) 12px 16px 16px 0;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
-.process-card:hover{transform:translateY(-4px)!important;box-shadow:rgba(255,255,255,.25) 0 0 0 8px,rgba(0,0,0,.15) 16px 24px 32px 0}
-.process-card .p-num{font:300 clamp(44px,5vw,72px)/1 "Inter Display","Inter","PingFang SC",sans-serif;color:var(--text)}
-.process-card h3{font-size:20px;font-weight:500}
-.process-card p{font-size:14px;color:var(--text-secondary);line-height:1.7}
+/* ============ PROCESS (Hanzo: offset rotated cards stage) ============ */
+.process-cards{position:relative;width:100%;max-width:1120px;height:560px;margin:0 auto;overflow:visible}
 
-/* Process connectors (Hanzo: ultra-thin rotated accent lines) */
-.process-connector{flex-shrink:0;width:36px;height:1.5px;align-self:center;background:var(--accent);border-radius:100px;opacity:.45;margin:0 -12px;z-index:1;position:relative}
-.process-connector:first-of-type{transform:rotate(-15deg)}
-.process-connector:last-of-type{transform:rotate(30deg)}
+/* Card item wrappers — positioned absolutely with transforms */
+.process-card-item{position:absolute;width:384px;height:454px;will-change:transform}
+.process-card-item-1{left:8%;top:62px;transform:translateX(90px) translateY(-20px) rotate(-18deg);z-index:2}
+.process-card-item-2{left:50%;top:48px;transform:translateX(-50%) translateY(125px) rotate(34deg);z-index:3}
+.process-card-item-3{right:8%;top:52px;transform:translateX(-90px) translateY(-80px) rotate(-4deg);z-index:1}
+
+/* Card body */
+.process-card{width:100%;height:100%;background:var(--surface);border-radius:16px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:24px;box-shadow:rgba(255,255,255,.25) 0 0 0 8px,rgba(0,0,0,.1) 12px 16px 16px 0;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.process-card-item:hover .process-card{transform:translateY(-6px);box-shadow:rgba(255,255,255,.25) 0 0 0 8px,rgba(0,0,0,.15) 16px 24px 32px 0}
+
+/* Number */
+.process-card .p-num{font:300 72px/1.25 "Inter Display","Inter","PingFang SC",sans-serif;letter-spacing:-.06em;color:var(--text)}
+
+/* Copy block */
+.process-copy{display:flex;flex-direction:column;gap:4px;width:100%}
+.process-card h3{font:400 20px/1.6 "Inter Display","Inter","PingFang SC",sans-serif;letter-spacing:-.02em;color:var(--text)}
+.process-card p{font:400 16px/1.7 "Inter Display","Inter","PingFang SC",sans-serif;color:var(--text-secondary);max-width:300px}
+
+/* Decorative line elements (behind cards) */
+.process-deco{position:absolute;z-index:0;pointer-events:none;border-radius:999px;border:1.5px solid var(--accent);opacity:.45}
+.process-deco-1{width:121px;height:187px;border-left-color:transparent;border-bottom-color:transparent;left:67%;bottom:114px;transform:rotate(-75deg)}
+.process-deco-2{width:90px;height:140px;border-right-color:transparent;border-top-color:transparent;left:29%;top:8px;transform:translateX(-50%) rotate(-25deg)}
 
 /* ============ TESTIMONIALS (Hanzo: 2 cards, no quote mark icon) ============ */
 .testimonials{display:flex;gap:24px;width:100%}
@@ -308,21 +321,23 @@ footer>*{position:relative;z-index:1}
 .hero .desc{animation:fade-in-up .7s .45s var(--ease) both}
 .hero .hero-ctas{animation:fade-in-up .7s .55s var(--ease) both}
 @keyframes fade-in-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.grid-3 .card:nth-child(1),.process-cards .process-card:nth-child(1){transition-delay:0s}
-.grid-3 .card:nth-child(2),.process-cards .process-card:nth-child(2){transition-delay:.06s}
-.grid-3 .card:nth-child(3),.process-cards .process-card:nth-child(3){transition-delay:.12s}
+.grid-3 .card:nth-child(1){transition-delay:0s}
+.grid-3 .card:nth-child(2){transition-delay:.06s}
+.grid-3 .card:nth-child(3){transition-delay:.12s}
 .grid-2 .shot:nth-child(1){transition-delay:0s}.grid-2 .shot:nth-child(2){transition-delay:.08s}
 .grid-2 .shot:nth-child(3){transition-delay:.16s}.grid-2 .shot:nth-child(4){transition-delay:.24s}
 
 /* ============ RESPONSIVE ============ */
 @media(max-width:1024px){
   .intro-carousel{height:460px}
-  .process-cards{gap:8px}
-  .process-card{padding:32px 24px}
+  .process-cards{max-width:960px}
+  .process-card-item{width:320px;height:400px}
   .profile-row{gap:48px}
 }
 @media(max-width:809px){
-  .process-cards .process-connector{display:none}
+  .process-cards{height:auto;display:flex;flex-direction:column;gap:55px;max-width:420px;padding:16px 0 0}
+  .process-card-item{position:relative;width:100%;height:350px;left:auto;right:auto;top:auto;transform:none!important}
+  .process-deco{display:none}
   nav{padding:0 24px;top:12px}
   .menu-panel{right:24px;top:68px;min-width:280px;padding:32px 40px;border-radius:24px}
   .menu-panel a{font-size:18px}
@@ -342,7 +357,10 @@ footer>*{position:relative;z-index:1}
   .trusted-ticker{gap:32px}
 }
 @media(max-width:480px){
-  .process-card{padding:32px 24px}
+  .process-card-item{height:300px}
+  .process-card{padding:28px}
+  .process-card .p-num{font-size:56px}
+  .process-card p{font-size:14px}
 }
 </style>
 </head>
@@ -473,26 +491,30 @@ footer>*{position:relative;z-index:1}
 <section id="process">
   <div class="sec-wrap">
     <div class="sec-head">
-      <div class="sec-tag"><em>How It Works</em></div>
-      <h2>三步导入，智能发现</h2>
-      <p class="desc">连接片源 → 自动搜刮 → AI 推荐，简单直接。</p>
+      <div class="sec-tag"><em>Our Process, Explained</em></div>
+      <h2>它是这样工作的</h2>
+      <p class="desc">导入片源、自动整理、智能推荐——让私人片库从存放变成发现。</p>
     </div>
-    <div class="process-cards" style="position:relative">
-      <div class="process-card fade-up" style="transform:rotate(-3deg)">
-        <div class="p-num">1</div><h3>导入资源</h3>
-        <p>连接本地文件夹或 WebDAV 服务器，自动扫描影片文件，支持电影、电视剧与其他分类。</p>
+    <div class="process-cards">
+      <div class="process-deco process-deco-1" aria-hidden="true"></div>
+      <div class="process-deco process-deco-2" aria-hidden="true"></div>
+      <div class="process-card-item process-card-item-1 fade-up">
+        <div class="process-card">
+          <div class="p-num">1</div>
+          <div class="process-copy"><h3>导入资源</h3><p>连接本地文件夹或 WebDAV 服务器，自动扫描影片文件，支持电影、电视剧与其他分类。</p></div>
+        </div>
       </div>
-      <!-- Hanzo-style decorative curve between cards -->
-      <div class="process-connector"></div>
-      <div class="process-card fade-up" style="transform:rotate(2deg)">
-        <div class="p-num">2</div><h3>自动搜刮</h3>
-        <p>自动匹配 TMDB 影片信息，生成海报墙和完整资料库。支持手动修正识别与重新绑定。</p>
+      <div class="process-card-item process-card-item-2 fade-up">
+        <div class="process-card">
+          <div class="p-num">2</div>
+          <div class="process-copy"><h3>自动搜刮</h3><p>自动匹配 TMDB 影片信息，生成海报墙和完整资料库。支持手动修正识别与重新绑定。</p></div>
+        </div>
       </div>
-      <!-- Hanzo-style decorative curve between cards -->
-      <div class="process-connector"></div>
-      <div class="process-card fade-up" style="transform:rotate(-2deg)">
-        <div class="p-num">3</div><h3>发现与推荐</h3>
-        <p>浏览 TMDB 榜单，查看观影统计与人格画像。让 AI 根据你的口味推荐下一部作品。</p>
+      <div class="process-card-item process-card-item-3 fade-up">
+        <div class="process-card">
+          <div class="p-num">3</div>
+          <div class="process-copy"><h3>发现与推荐</h3><p>浏览 TMDB 榜单，查看观影统计与人格画像。让 AI 根据你的口味推荐下一部作品。</p></div>
+        </div>
       </div>
     </div>
   </div>
