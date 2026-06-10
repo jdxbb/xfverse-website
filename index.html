@@ -23,9 +23,9 @@
   --text:#000;
   --text-secondary:rgba(0,0,0,.5);
   --text-tertiary:rgba(0,0,0,.25);
-  --accent:#c2858c;
-  --accent-glow:rgba(194,133,140,.15);
-  --accent-subtle:rgba(194,133,140,.06);
+  --accent:#ff3700;
+  --accent-glow:rgba(255,55,0,.15);
+  --accent-subtle:rgba(255,55,0,.06);
   --border:rgba(0,0,0,.08);
   --border-strong:rgba(0,0,0,.12);
   --radius-sm:16px;
@@ -181,7 +181,8 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .testimonials{display:flex;gap:24px;width:100%}
 .testimonial{flex:1 0 0;min-width:0;display:flex;flex-direction:column;gap:16px}
 .testimonial blockquote{font-size:22px;font-weight:400;line-height:1.4;color:var(--text)}
-.testimonial .t-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 16px "Inter",sans-serif;color:var(--text-secondary);background:rgba(0,0,0,.04);margin-top:4px}
+.testimonial .t-avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;position:relative;background:rgba(0,0,0,.04)}
+.testimonial .t-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .testimonial .t-name{font-size:14px;font-weight:600;color:var(--text)}
 .testimonial .t-role{font-size:13px;color:var(--text-secondary)}
 
@@ -194,13 +195,6 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .shot .shot-cap{padding:20px 24px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:4px}
 .shot .shot-cap .cap-title{font-size:16px;font-weight:500;color:var(--text)}
 .shot .shot-cap .cap-tag{font:400 10px "Fragment Mono",monospace;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em}
-
-/* ============ BENEFITS (compact text grid, adapted for XFVerse) ============ */
-.benefits-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%}
-.benefit{padding:28px 24px;display:flex;flex-direction:column;gap:8px;transition:background .3s;border-radius:12px}
-.benefit:hover{background:rgba(255,255,255,.4)}
-.benefit h3{font-size:17px;font-weight:500}
-.benefit p{font-size:13px;color:var(--text-secondary);line-height:1.7}
 
 /* ============ ABOUT ============ */
 .profile-row{display:flex;gap:64px;align-items:center;width:100%}
@@ -249,9 +243,6 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .faq-a{overflow:hidden;max-height:0;transition:max-height .4s var(--ease)}
 .faq-item.open .faq-a{max-height:400px;padding-bottom:24px}
 .faq-a p{font-size:15px;color:var(--text-secondary);line-height:1.7;max-width:640px}
-
-/* ============ CTA ============ */
-.cta-section{text-align:center;gap:24px;padding-bottom:140px}
 
 /* ============ TICKER ============ */
 .ticker-wrap{width:100%;max-width:1440px;overflow:hidden;margin-top:56px;position:relative}
@@ -306,7 +297,6 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
   .menu-panel a{font-size:18px}
   section{padding:80px 24px}.hero{padding:140px 24px 80px}.sec-head{margin-bottom:56px}
   .grid-2,.grid-3,.process-cards,.testimonials{flex-direction:column}
-  .benefits-grid{grid-template-columns:repeat(2,1fr)}
   .profile-row{flex-direction:column;gap:40px}.profile-img{width:200px;aspect-ratio:1}
   .dl-meta{flex-direction:column;gap:16px}.dl-card{padding:44px 32px}
   footer{padding:56px 24px 28px;margin-top:56px}.ft-links{gap:24px}
@@ -314,7 +304,6 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
   .trusted-ticker{gap:32px}
 }
 @media(max-width:480px){
-  .benefits-grid{grid-template-columns:1fr}
   .process-card{padding:32px 24px}
 }
 </style>
@@ -361,20 +350,6 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
         <a href="#download" class="btn btn-primary btn-lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 免费下载</a>
         <a href="https://github.com/jdxbb/XFVerse" class="btn btn-outline btn-lg" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg> GitHub</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== TRUSTED BY (Hanzo: tickers section between hero and intro) ====== -->
-<section style="padding:0 48px 80px">
-  <div class="sec-wrap">
-    <div class="mono" style="margin-bottom:32px;color:var(--text-tertiary)">Trusted by Developers</div>
-    <div class="trusted-ticker">
-      <span class="trusted-item">.NET Foundation</span>
-      <span class="trusted-item">TMDB API</span>
-      <span class="trusted-item">OpenAI</span>
-      <span class="trusted-item">DeepSeek</span>
-      <span class="trusted-item">GitHub Community</span>
     </div>
   </div>
 </section>
@@ -479,14 +454,14 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
       <div class="testimonial fade-up">
         <blockquote>在推荐理由可解释性盲测中，三路 AI 策略在用户信任度评分上显著优于单一协同过滤基线。23 种观影人格分类在聚类一致性中达 87% 稳定性。</blockquote>
         <div style="display:flex;align-items:center;gap:12px;margin-top:4px">
-          <div class="t-avatar">D4</div>
+          <div class="t-avatar"><img src="assets/home.png" alt="" loading="lazy"></div>
           <div><div class="t-name">DeepSeek-V4</div><div class="t-role">推荐系统 + 人格分析盲测 · 2026</div></div>
         </div>
       </div>
       <div class="testimonial fade-up">
         <blockquote>三路并行策略 + 候选池水印去重，在推荐多样性上显著优于传统 Top-N 推荐方案。推荐附带可解释理由，而非黑盒输出。</blockquote>
         <div style="display:flex;align-items:center;gap:12px;margin-top:4px">
-          <div class="t-avatar">O4</div>
+          <div class="t-avatar"><img src="assets/library.png" alt="" loading="lazy"></div>
           <div><div class="t-name">Claude Opus 4</div><div class="t-role">系统架构 + 可解释性盲测 · 2026</div></div>
         </div>
       </div>
@@ -505,23 +480,6 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
     <div class="grid-2">
       <div class="shot fade-up"><div class="shot-img"><img src="assets/discovery.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">发现 · 榜单</div><div class="cap-tag">Discovery · Rankings</div></div></div>
       <div class="shot fade-up"><div class="shot-img"><img src="assets/insights.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">AI 推荐</div><div class="cap-tag">AI Recommendations</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== BENEFITS (XFVerse unique: 8 compact feature items) ====== -->
-<section>
-  <div class="sec-wrap">
-    <div class="sec-head"><div class="sec-tag"><em>Why XFVerse</em></div><h2>为本地影库用户而生</h2></div>
-    <div class="benefits-grid">
-      <div class="benefit fade-up"><h3>本地优先</h3><p>数据存储于本地 SQLite，核心观影记录与偏好绝不上传，隐私由你掌控。</p></div>
-      <div class="benefit fade-up"><h3>AI 驱动</h3><p>23 种观影人格 · 6 维观影 DNA · 三路并行推荐策略——不止分类，更是理解。</p></div>
-      <div class="benefit fade-up"><h3>mpv 内核</h3><p>集成 libmpv 播放器，支持多音轨、多字幕、多播放源无缝切换。</p></div>
-      <div class="benefit fade-up"><h3>WebDAV 支持</h3><p>直接挂载远程片库，无需下载到本地即可浏览元数据与流式播放。</p></div>
-      <div class="benefit fade-up"><h3>丰富洞察</h3><p>日历热力图、类型 / 情绪 / 场景分布、时段分析、工作日与周末对比。</p></div>
-      <div class="benefit fade-up"><h3>可解释推荐</h3><p>每部推荐附理由——「因为你偏爱慢节奏科幻」而非黑盒输出。</p></div>
-      <div class="benefit fade-up"><h3>反馈回流</h3><p>标记不感兴趣后 AI 自动调整权重，推荐随你的口味持续进化。</p></div>
-      <div class="benefit fade-up"><h3>永久免费</h3><p>基础功能完全免费，AI 增强为可选模块，用户自行配置 API 端点。</p></div>
     </div>
   </div>
 </section>
@@ -605,16 +563,6 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
       <div class="faq-item"><button class="faq-q">多台电脑之间能同步吗？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>通过 WebDAV 可实现跨设备的片库访问与流式播放。本地数据库暂不支持自动同步，我们计划在未来版本中加入可选的数据同步功能。</p></div></div>
       <div class="faq-item"><button class="faq-q">支持插件或扩展吗？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>我们计划在未来版本中开放插件 API，允许社区贡献自定义数据源、推荐策略和界面主题。欢迎在 GitHub 上关注我们的开发路线图。</p></div></div>
     </div>
-  </div>
-</section>
-
-<!-- ====== CTA (Hanzo: integrated with footer) ====== -->
-<section class="cta-section">
-  <div class="sec-wrap">
-    <div class="badge-outline"><span class="dot"></span> Open Source</div>
-    <h1>开始使用<br>XFVerse</h1>
-    <p class="desc" style="max-width:480px;text-align:center;margin-top:16px">让私人片库从「存着」变成「懂你」。</p>
-    <div class="btn-group" style="margin-top:24px"><a href="#download" class="btn btn-primary btn-xl">免费下载</a><a href="https://github.com/jdxbb/XFVerse" class="btn btn-outline btn-xl" target="_blank">GitHub</a></div>
   </div>
 </section>
 
