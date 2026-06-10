@@ -93,12 +93,18 @@ nav{position:fixed;top:20px;left:0;right:0;z-index:100;display:flex;align-items:
 .menu-overlay.open{opacity:1;pointer-events:auto}
 
 /* Menu panel (compact top-right popover) */
-.menu-panel{position:fixed;top:76px;right:48px;z-index:181;width:auto;min-width:180px;padding:6px;display:flex;flex-direction:column;align-items:stretch;gap:1px;background:#fff;border-radius:20px;box-shadow:0 0 0 .5px rgba(0,0,0,.06),0 2px 6px rgba(0,0,0,.04),0 12px 32px rgba(0,0,0,.10),0 32px 80px rgba(0,0,0,.06);opacity:0;pointer-events:none;transform-origin:top right;transform:translateY(-6px) scale(.95);transition:opacity .22s var(--ease),transform .26s var(--ease)}
+/* Menu panel — Hanzo exact: asymmetric radius, dialog role */
+.menu-panel{position:fixed;top:76px;right:48px;z-index:181;display:flex;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-radius:24px 8px 24px 24px;padding:12px 8px 10px;min-width:200px;box-shadow:0 0 0 .5px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.04),0 16px 48px rgba(0,0,0,.12);opacity:0;pointer-events:none;transform-origin:100% 0%;transform:translateY(-4px) scale(.96);transition:opacity .2s var(--ease),transform .24s var(--ease)}
 .menu-overlay.open .menu-panel{opacity:1;pointer-events:auto;transform:translateY(0) scale(1)}
-.menu-panel a{display:flex;align-items:center;min-height:36px;padding:0 12px;border-radius:12px;font:400 13px/1 "Inter Display","Inter","PingFang SC",sans-serif;letter-spacing:-.01em;color:#000;text-decoration:none;transition:background .15s}
-.menu-panel a:hover{background:rgba(0,0,0,.05)}
-.menu-panel .menu-cta{margin-top:4px;min-height:36px;border-radius:14px;background:var(--accent);color:#fff;font-weight:500;justify-content:center;padding:0 14px}
-.menu-panel .menu-cta:hover{background:var(--accent);color:#fff}
+.menu-panel a{font:400 15px/1.4 "Inter Display","Inter","PingFang SC",sans-serif;letter-spacing:-.01em;color:#000;text-decoration:none;padding:8px 16px;border-radius:8px;transition:background .15s}
+.menu-panel a:hover{background:rgba(0,0,0,.04)}
+.menu-panel .menu-cta{font-weight:600;color:var(--accent)}
+.menu-panel .menu-cta:hover{background:rgba(0,0,0,.04);color:var(--accent)}
+/* Social icon row */
+.menu-social{display:flex;gap:8px;padding:10px 12px 2px;margin-top:4px;border-top:1px solid rgba(0,0,0,.06)}
+.menu-social a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:154px;border:1px solid rgba(0,0,0,.15);color:rgba(0,0,0,.4);padding:0;transition:border-color .2s,color .2s}
+.menu-social a:hover{color:#000;border-color:rgba(0,0,0,.3);background:transparent}
+.menu-social svg{width:15px;height:15px}
 
 /* ============ SECTIONS ============ */
 section{width:100%;display:flex;flex-direction:column;align-items:center;padding:120px 48px;position:relative;overflow:hidden}
@@ -361,9 +367,8 @@ footer>*{position:relative;z-index:1}
   .process-deco{display:none}
   nav{padding:0 24px;top:12px}
   .menu-btn{width:44px;height:44px}
-  .menu-panel{top:62px;right:24px;min-width:180px;padding:6px;border-radius:18px}
-  .menu-panel a{min-height:36px;padding:0 12px;font-size:13px}
-  .menu-panel .menu-cta{min-height:36px}
+  .menu-panel{top:62px;right:24px;min-width:180px;padding:12px 8px 10px}
+  .menu-panel a{padding:8px 16px;font-size:15px}
   section{padding:80px 24px}.hero{padding:140px 24px 80px}.sec-head{margin-bottom:56px}
   .grid-2,.grid-3,.process-cards,.testimonials{flex-direction:column}
   .about-content{grid-template-columns:1fr;gap:40px;align-items:start}
@@ -408,12 +413,17 @@ footer>*{position:relative;z-index:1}
   <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span></button>
 </nav>
 <div class="menu-overlay" id="menuOverlay">
-  <div class="menu-panel">
+  <div class="menu-panel" role="dialog">
     <a href="#features">功能特性</a>
     <a href="#process">使用流程</a>
     <a href="#projects">界面预览</a>
+    <a href="#about">关于项目</a>
     <a href="#faq">常见问题</a>
     <a href="#download" class="menu-cta">下载 XFVerse</a>
+    <div class="menu-social">
+      <a href="https://github.com/jdxbb/XFVerse" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg></a>
+      <a href="mailto:jdxbb@stu2023.jnu.edu.cn" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+    </div>
   </div>
 </div>
 
