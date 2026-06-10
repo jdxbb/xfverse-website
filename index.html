@@ -226,14 +226,17 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .process-deco-1{width:110px;height:160px;border-left-color:transparent;border-bottom-color:transparent;left:61%;bottom:56px;transform:rotate(-55deg)}
 .process-deco-2{width:86px;height:128px;border-right-color:transparent;border-top-color:transparent;left:33%;top:18px;transform:translateX(-50%) rotate(-18deg)}
 
-/* ============ TESTIMONIALS (Hanzo: 2 cards, no quote mark icon) ============ */
+/* ============ TESTIMONIALS (Hanzo: curve image + large quote mark + text) ============ */
 .testimonials{display:flex;gap:24px;width:100%}
-.testimonial{flex:1 0 0;min-width:0;display:flex;flex-direction:column;gap:16px}
-.testimonial blockquote{font-size:22px;font-weight:400;line-height:1.4;color:var(--text)}
-.testimonial .t-avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;position:relative;background:rgba(0,0,0,.04)}
-.testimonial .t-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.testimonial .t-name{font-size:14px;font-weight:600;color:var(--text)}
-.testimonial .t-role{font-size:13px;color:var(--text-secondary)}
+.testimonial{flex:1 0 0;min-width:0;display:flex;flex-direction:column;gap:24px}
+.testimonial-top{display:flex;align-items:center;gap:16px}
+.testimonial-curve{width:64px;height:42px;flex-shrink:0;border-radius:297px;overflow:hidden;position:relative}
+.testimonial-curve img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.testimonial-meta{display:flex;flex-direction:column;gap:2px}
+.testimonial-meta .t-name{font:600 14px/1.3 "Inter",sans-serif;color:var(--text)}
+.testimonial-meta .t-role{font:400 13px/1.4 "Inter",sans-serif;color:var(--text-secondary)}
+.testimonial-quote{font:700 44px/1 "Inter Display","Inter",sans-serif;color:var(--text);opacity:.25;letter-spacing:-.04em;line-height:.8;margin-bottom:-8px}
+.testimonial blockquote{font:400 clamp(18px,2vw,22px)/1.4 "Inter Display","Inter","PingFang SC",sans-serif;color:var(--text);letter-spacing:-.01em}
 
 /* ============ SHOT / PROJECT CARDS (Hanzo "Our Projects" style) ============ */
 .shot{flex:1 0 0;min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;transition:border-color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease)}
@@ -558,24 +561,32 @@ footer>*{position:relative;z-index:1}
   </div>
 </section>
 
-<!-- ====== TESTIMONIALS (Hanzo: 2 cards, no quote icon) ====== -->
+<!-- ====== TESTIMONIALS (Hanzo: curve image + large quote mark + text) ====== -->
 <section>
   <div class="sec-wrap">
     <div class="sec-head"><div class="sec-tag"><em>Blind Test</em></div><h2>大模型盲测</h2></div>
     <div class="testimonials">
       <div class="testimonial fade-up">
-        <blockquote>三路 AI 策略在信任度盲测中显著优于单一协同过滤。23 种观影人格，聚类一致性达 87%。</blockquote>
-        <div style="display:flex;align-items:center;gap:12px;margin-top:4px">
-          <div class="t-avatar" style="background:linear-gradient(135deg,#4F46E5,#7C3AED);display:flex;align-items:center;justify-content:center;font:600 18px 'Inter',sans-serif;color:#fff">D</div>
-          <div><div class="t-name">DeepSeek-V4</div><div class="t-role">推荐系统 + 人格分析盲测 · 2026</div></div>
+        <div class="testimonial-top">
+          <div class="testimonial-curve"><img src="https://framerusercontent.com/images/GQYbkjoIOqJZo9gC9bpE4YLn18.png?width=1536&height=1024" alt=""></div>
+          <div class="testimonial-meta">
+            <div class="t-name">DeepSeek-V4</div>
+            <div class="t-role">推荐系统 + 人格分析盲测 · 2026</div>
+          </div>
         </div>
+        <div class="testimonial-quote">&ldquo;</div>
+        <blockquote>三路 AI 策略在信任度盲测中显著优于单一协同过滤。23 种观影人格，聚类一致性达 87%。</blockquote>
       </div>
       <div class="testimonial fade-up">
-        <blockquote>三路策略 + 候选池去重，推荐多样性显著优于传统 Top-N。每部推荐附理由，拒绝黑盒。</blockquote>
-        <div style="display:flex;align-items:center;gap:12px;margin-top:4px">
-          <div class="t-avatar" style="background:linear-gradient(135deg,#DA7756,#C44B2A);display:flex;align-items:center;justify-content:center;font:600 18px 'Inter',sans-serif;color:#fff">C</div>
-          <div><div class="t-name">Claude Opus 4</div><div class="t-role">系统架构 + 可解释性盲测 · 2026</div></div>
+        <div class="testimonial-top">
+          <div class="testimonial-curve"><img src="https://framerusercontent.com/images/TjQr3Mj8oNK6Ndfogb5IMNxXGg.png?width=1536&height=1024" alt=""></div>
+          <div class="testimonial-meta">
+            <div class="t-name">Claude Opus 4</div>
+            <div class="t-role">系统架构 + 可解释性盲测 · 2026</div>
+          </div>
         </div>
+        <div class="testimonial-quote">&ldquo;</div>
+        <blockquote>三路策略 + 候选池去重，推荐多样性显著优于传统 Top-N。每部推荐附理由，拒绝黑盒。</blockquote>
       </div>
     </div>
   </div>
