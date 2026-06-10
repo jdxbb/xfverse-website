@@ -75,7 +75,7 @@ h3{font:400 24px/1.3 "Inter Display","Inter","PingFang SC",sans-serif;letter-spa
 .big-num{font:300 clamp(44px,5vw,72px)/1 "Inter Display","Inter","PingFang SC",sans-serif}
 
 /* ============ NAV (Hanzo: floating, no title bar, wordmark pill) ============ */
-nav{position:fixed;top:20px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px}
+nav{position:fixed;top:20px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 68px 0 32px}
 .logo{font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--text);background:var(--surface);border-radius:var(--radius-wordmark);padding:6px 14px;transition:background .2s;display:inline-flex;align-items:center;gap:6px}
 .logo:hover{background:var(--surface-hover)}
 .logo span{font-weight:400;color:var(--accent)}
@@ -93,7 +93,7 @@ nav{position:fixed;top:20px;left:0;right:0;z-index:100;display:flex;align-items:
 
 /* Menu panel (compact top-right popover) */
 /* Menu panel — Hanzo exact: asymmetric radius, dialog role */
-.menu-panel{position:fixed;top:76px;right:48px;z-index:181;display:flex;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-radius:24px 8px 24px 24px;padding:12px 8px 10px;min-width:200px;box-shadow:0 0 0 .5px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.04),0 16px 48px rgba(0,0,0,.12);opacity:0;pointer-events:none;transform-origin:100% 0%;transform:translateY(-4px) scale(.96);transition:opacity .2s var(--ease),transform .24s var(--ease)}
+.menu-panel{position:fixed;top:76px;right:68px;z-index:181;display:flex;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-radius:24px 8px 24px 24px;padding:12px 8px 10px;min-width:200px;box-shadow:0 0 0 .5px rgba(0,0,0,.06),0 2px 8px rgba(0,0,0,.04),0 16px 48px rgba(0,0,0,.12);opacity:0;pointer-events:none;transform-origin:100% 0%;transform:translateY(-4px) scale(.96);transition:opacity .2s var(--ease),transform .24s var(--ease)}
 .menu-overlay.open .menu-panel{opacity:1;pointer-events:auto;transform:translateY(0) scale(1)}
 .menu-panel a{font:400 15px/1.4 "Inter Display","Inter","PingFang SC",sans-serif;letter-spacing:-.01em;color:#000;text-decoration:none;padding:8px 16px;border-radius:8px;transition:background .15s}
 .menu-panel a:hover{background:rgba(0,0,0,.04)}
@@ -423,9 +423,38 @@ footer>*{position:relative;z-index:1}
 .docs-sidebar a.active{color:var(--text);background:var(--surface);font-weight:500;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .docs-sidebar a.active::before{opacity:1}
 .docs-content{flex:1;min-width:0;max-width:720px}
-.docs-content section{padding:52px 0 0;margin-bottom:60px;border-top:1px solid var(--border)}
-.docs-content section:first-of-type{border-top:none;padding-top:0}
+.docs-content section{padding:52px 40px;margin-bottom:60px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);box-shadow:0 4px 24px rgba(0,0,0,.04)}
+.docs-content section:first-of-type{border-top:1px solid var(--border);padding-top:52px}
 .docs-content h2{font:400 34px/1.2 "Inter Display","Inter","PingFang SC",sans-serif;margin:0 0 24px;letter-spacing:-.03em;color:var(--text)}
+
+/* Numbered sections styling */
+.docs-content{
+  counter-reset: docs-section;
+}
+.docs-content section{
+  counter-increment: docs-section;
+}
+.docs-content section h2{
+  position: relative;
+  padding-left: 56px;
+}
+.docs-content section h2::before{
+  content: counter(docs-section);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(-6px);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+}
 .docs-content h3{font:500 18px/1.5 "Inter","PingFang SC",sans-serif;margin:36px 0 14px;color:var(--text);letter-spacing:-.01em}
 .docs-content p{font:400 16px/1.8 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);margin-bottom:18px}
 .docs-content code{font:400 13px/1.5 "Fragment Mono",monospace;background:rgba(0,0,0,.06);padding:3px 8px;border-radius:5px;color:#b8472e}
@@ -438,6 +467,23 @@ footer>*{position:relative;z-index:1}
 .docs-content a{color:var(--accent);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(194,133,140,.25);transition:border-color .15s}
 .docs-content a:hover{color:var(--text);border-bottom-color:var(--text)}
 @media(max-width:809px){section:first-of-type{padding:120px 24px 0!important}.docs-page{flex-direction:column;gap:40px;padding:0 24px;margin-top:40px}.docs-sidebar{position:static;width:100%;flex-direction:row;flex-wrap:wrap;gap:8px;overflow-x:auto;padding-bottom:20px;border-bottom:1px solid var(--border)}.docs-sidebar a{white-space:nowrap;font-size:13px;padding:6px 12px;border-radius:20px;border:1px solid var(--border)}.docs-sidebar a.active{border-color:var(--accent)}.docs-sidebar-title{display:none}.docs-sidebar a::before{display:none}.docs-content h2{font-size:26px}}
+@media(max-width:809px){
+  .docs-content section{
+    padding:40px 24px;
+    margin-bottom:40px;
+    border-radius:var(--radius-md);
+  }
+  /* Adjust numbered badge sizing on small screens */
+  .docs-content section h2{
+    padding-left:48px;
+  }
+  .docs-content section h2::before{
+    width:32px;
+    height:32px;
+    font-size:16px;
+    transform: translateY(-4px);
+  }
+}
 </style>
 </head>
 <body>
@@ -454,8 +500,8 @@ footer>*{position:relative;z-index:1}
     <a href="index.html#process">使用流程</a>
     <a href="index.html#projects">界面预览</a>
     <a href="docs.html">使用文档</a>
-    <a href="index.html#faq">常见问题</a>
-    <a href="index.html#download" class="menu-cta">下载 XFVerse</a>
+      <a href="index.html#faq">常见问题</a>
+      <a href="index.html#download" class="menu-cta">下载 XFVerse</a>
     <div class="menu-social">
       <a href="https://github.com/jdxbb/XFVerse" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg></a>
       <a href="mailto:jdxbb@stu2023.jnu.edu.cn" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
@@ -478,12 +524,12 @@ footer>*{position:relative;z-index:1}
     <a href="#quickstart">快速开始</a>
     <a href="#install">安装与环境</a>
     <a href="#scan">扫描与搜刮</a>
+    <a href="#series">电视剧支持</a>
     <a href="#library">媒体库管理</a>
     <a href="#discovery">发现与推荐</a>
     <a href="#stats">观影统计</a>
     <a href="#webdav">WebDAV 配置</a>
     <a href="#ai">AI 画像与推荐</a>
-    <a href="#faq-docs">常见问题</a>
   </aside>
 
   <main class="docs-content">
@@ -523,12 +569,27 @@ footer>*{position:relative;z-index:1}
       <p>如果自动识别结果不准确，可在媒体库中右键影片选择"修正识别"，手动搜索正确的 TMDB 条目进行绑定。</p>
     </section>
 
+    <section id="series">
+      <h2>电视剧支持</h2>
+      <h3>识别规则与命名</h3>
+      <p>XFVerse 能够自动识别电视剧，包括季数和集数。为提高识别准确率，建议采用 <code>剧名/Season 01/剧名 S01E01.扩展名</code> 的目录结构和文件名，以便准确匹配元数据。</p>
+      <h3>剧集浏览</h3>
+      <p>在媒体库中，电视剧以海报卡形式呈现。点击某个剧集进入详情页，可查看各季及每一集列表，显示已观看状态和未观看集数。</p>
+      <h3>播放进度与状态同步</h3>
+      <p>系统会记录每一集的播放进度与观看状态。关闭播放器后可继续从上次停留的位置播放，并在不同设备间同步已看标记。</p>
+      <h3>更新监控与提醒</h3>
+      <p>对追更的剧集，可以开启更新监控。软件会定期扫描新的剧集文件，一旦发现新的一季或集数，自动加入媒体库并在发现页显示更新提示。</p>
+      <div class="docs-note">如识别错误，可在剧集详情页使用“修正识别”手动绑定正确条目。</div>
+    </section>
+
     <section id="library">
       <h2>媒体库管理</h2>
       <h3>影视墙浏览</h3>
       <p>首页以海报墙形式展示已识别的影片。支持按类型、年份、评分等维度筛选和排序。</p>
       <h3>播放源管理</h3>
       <p>每部影片可关联多个播放源（本地文件、WebDAV 远程文件）。播放时自动选择默认源。</p>
+      <h3>剧集视图</h3>
+      <p>剧集以季为单位分组展示，点击剧集进入详情页，可展开查看每一集的标题、时长和进度。系统会标记已观看集数，帮助你快速找到未看的内容。</p>
       <h3>浅色 / 深色主题</h3>
       <p>在设置中可切换浅色与深色双主题。播放器界面固定使用深色模式以保证沉浸感。</p>
     </section>
@@ -575,15 +636,6 @@ API Key: sk-xxxxxxxx</code></pre>
       <p>AI API 调用仅传输脱敏后的观影偏好特征（如类型偏好、评分分布），不会传输影片名称、文件路径等个人信息。</p>
     </section>
 
-    <section id="faq-docs">
-      <h2>常见问题</h2>
-      <h3>XFVerse 收费吗？</h3>
-      <p>基础功能完全免费，包括扫描、搜刮、影视墙管理、本地播放与观影统计。AI 画像与推荐为可选模块。</p>
-      <h3>支持哪些影片格式？</h3>
-      <p>基于 mpv 播放内核，支持 MKV、MP4、AVI、TS 等主流格式，以及 HDR、蓝光字幕、多音轨。</p>
-      <h3>数据存储在哪里？</h3>
-      <p>所有核心数据存储在本地 SQLite 数据库中，不会自动上传。TMDB / OMDb 仅传输影片名称用于元数据匹配。</p>
-    </section>
   </main>
 </div>
 
@@ -606,21 +658,7 @@ API Key: sk-xxxxxxxx</code></pre>
   </div>
 </footer>
 
-<script>
-// ---- Menu Popover Toggle (Hanzo: compact top-right popover) ----
-(function(){const btn=document.getElementById('menuBtn'),overlay=document.getElementById('menuOverlay'),panel=overlay?.querySelector('.menu-panel');function close(){btn?.classList.remove('open');overlay?.classList.remove('open');btn?.setAttribute('aria-expanded','false')}function open(){btn?.classList.add('open');overlay?.classList.add('open');btn?.setAttribute('aria-expanded','true')}if(btn&&overlay){btn.setAttribute('aria-expanded','false');btn.addEventListener('click',e=>{e.stopPropagation();overlay.classList.contains('open')?close():open()});overlay.addEventListener('click',close);panel?.addEventListener('click',e=>e.stopPropagation());panel?.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()})}})();
-
-// ---- FAQ Accordion ----
-document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const i=b.closest('.faq-item'),o=i.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(e=>e.classList.remove('open'));if(!o)i.classList.add('open')})});
-
-// ---- Scroll-triggered fade-up ----
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');obs.unobserve(x.target)}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.fade-up').forEach(e=>obs.observe(e));
-
-// ---- Smooth scroll anchor links ----
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t)window.scrollTo({top:t.getBoundingClientRect().top+pageYOffset-80,behavior:'smooth'})})});
-</script>
-</body>
+<!-- Removed duplicate inline script and redundant closing body -->
 
 
 <script>
