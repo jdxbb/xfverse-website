@@ -268,10 +268,10 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 /* Right: bio + small icon + vertical-line experience */
 .about-main{display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding-top:0;height:100%;align-self:stretch}
 .about-text-top{width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
-.about-bio{flex:1;max-width:550px;font:400 clamp(15px,1.5vw,18px)/1.6 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);text-wrap:balance}
+.about-bio{flex:1;max-width:550px;font:400 clamp(15px,1.5vw,18px)/1.6 "Inter","PingFang SC",sans-serif;color:var(--text);text-wrap:balance}
 .about-icon{width:16px;height:16px;flex:0 0 16px;color:var(--accent);display:flex;align-items:center;justify-content:center;position:sticky;top:96px}
 .about-icon svg{width:16px;height:16px}
-.about-experience{width:100%;display:flex;flex-direction:column;margin-top:0;padding-left:60px;border-left:1px solid rgba(0,0,0,.25);border-top:none}
+.about-experience{width:100%;display:flex;flex-direction:column;margin-top:0;padding-left:40px;border-left:1px solid rgba(0,0,0,.18);border-top:none}
 .about-exp-item{display:grid;grid-template-columns:1fr 1fr auto;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.1)}
 .about-exp-item .exp-role,.about-exp-item .exp-company,.about-exp-item .exp-date{font:400 12px/1.4 "Fragment Mono","Inter",monospace;letter-spacing:.02em}
 .about-exp-item .exp-role{color:var(--text);text-align:left}
@@ -626,7 +626,7 @@ footer>*{position:relative;z-index:1}
       </div>
       <div class="about-main fade-up">
         <div class="about-text-top">
-          <p class="about-bio">XFVerse 是面向本地硬盘与 WebDAV 用户的智能观影发现平台。它把媒体库管理、元数据搜刮、观影统计和 AI 推荐整合在一个本地优先的桌面应用中，让私人片库从「存着」变成「懂你」。</p>
+          <p class="about-bio">XFVerse 是面向本地硬盘与 WebDAV 用户的智能观影发现平台。它把媒体库管理、元数据搜刮、观影统计和 AI 推荐整合在一个本地优先的桌面应用中。基于 mpv 内核与 SQLite 数据库，所有核心数据保留在本地，让私人片库从「存着」变成「懂你」。</p>
           <div class="about-icon" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M236.8 132.8a8 8 0 0 1-2.4 5.7l-96 96a8 8 0 0 1-11.3-11.3L209.9 144H32a8 8 0 0 1 0-16h177.9l-82.8-82.8a8 8 0 0 1 11.3-11.3l96 96a8 8 0 0 1 2.4 2.9Z"/></svg></div>
         </div>
         <div class="about-experience">
