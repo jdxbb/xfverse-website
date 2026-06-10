@@ -469,9 +469,9 @@ footer>*{position:relative;z-index:1}
 .docs-content pre{background:var(--surface);border-radius:16px;padding:24px 28px;overflow-x:auto;margin:22px 0;border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,.03)}
 .docs-content pre code{background:none;padding:0;font-size:13px;line-height:1.8;color:var(--text)}
 .docs-content ul,.docs-content ol{padding-left:24px;margin-bottom:18px;text-align:left;width:100%}
-.docs-content li{font:400 16px/1.8 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);margin-bottom:8px}
+.docs-content li{font:400 15px/1.75 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);margin-bottom:8px}
 .docs-content li::marker{color:var(--accent);font-weight:600}
-.docs-content .docs-note{background:var(--accent-subtle);border-left:3px solid var(--accent);padding:18px 22px;border-radius:0 14px 14px 0;margin:28px 0;font:400 16px/1.8 "Inter","PingFang SC",sans-serif;color:var(--text);text-align:left;width:100%}
+.docs-content .docs-note{background:var(--accent-subtle);border-left:3px solid var(--accent);padding:18px 22px;border-radius:0 14px 14px 0;margin:28px 0;font:400 14px/1.7 "Inter","PingFang SC",sans-serif;color:var(--text);text-align:left;width:100%}
 .docs-content a{color:var(--accent);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(194,133,140,.25);transition:border-color .15s}
 .docs-content a:hover{color:var(--text);border-bottom-color:var(--text)}
 @media(min-width:810px) and (max-width:1279px){.docs-page{display:flex;gap:40px;width:100%;max-width:none;margin:72px 0 100px;padding:0 var(--docs-gutter)}.docs-sidebar{grid-area:auto;justify-self:auto;margin-left:0;width:208px}.docs-content{grid-area:auto;justify-self:auto;flex:1;width:100%;max-width:720px;margin:0 auto}}
@@ -587,24 +587,24 @@ footer>*{position:relative;z-index:1}
   </aside>
 
   <main class="docs-content">
-    <section id=”quickstart”>
+    <section id="quickstart">
       <h2>快速开始</h2>
       <p>XFVerse 是一款面向本地硬盘与 WebDAV 用户的智能观影发现平台。它把媒体库管理、元数据搜刮、观影统计和 AI 推荐整合在一个本地优先的桌面应用中。本文档将引导你完成从安装到日常使用的完整流程。</p>
-      <div class=”docs-note”>XFVerse 当前处于活跃开发阶段，基础功能永久免费。AI 画像与推荐为可选增强模块，需自行配置 API 端点。</div>
-      <h3 id=”quickstart-runtime”>第一步：安装运行时</h3>
+      <div class="docs-note">XFVerse 当前处于活跃开发阶段，基础功能永久免费。AI 画像与推荐为可选增强模块，需自行配置 API 端点。</div>
+      <h3 id="quickstart-runtime">第一步：安装运行时</h3>
       <p>XFVerse 基于 .NET 8 构建，运行前需安装 <code>.NET 8 Desktop Runtime (x64)</code>。安装包启动时会自动检测运行环境，如未安装会提示并引导下载。也可以手动从 Microsoft 官网下载：</p>
       <pre><code>https://dotnet.microsoft.com/download/dotnet/8.0</code></pre>
-      <p>选择 “Desktop Runtime” → Windows x64 版本，下载并安装即可。</p>
-      <h3 id=”quickstart-download”>第二步：下载 XFVerse</h3>
-      <p>从 <a href=”index.html#download”>下载页面</a> 获取最新版本安装包。解压到任意目录后，双击运行 <code>XFVerse.exe</code>。首次启动时软件会创建本地数据库和配置文件，默认存储在用户目录下。</p>
-      <h3 id=”quickstart-source”>第三步：添加片源</h3>
+      <p>选择 "Desktop Runtime" → Windows x64 版本，下载并安装即可。</p>
+      <h3 id="quickstart-download">第二步：下载 XFVerse</h3>
+      <p>从 <a href="index.html#download">下载页面</a> 获取最新版本安装包。解压到任意目录后，双击运行 <code>XFVerse.exe</code>。首次启动时软件会创建本地数据库和配置文件，默认存储在用户目录下。</p>
+      <h3 id="quickstart-source">第三步：添加片源</h3>
       <p>启动后进入「扫描」页面。点击「本地目录」添加包含影片文件的文件夹，或点击「WebDAV」配置远程服务器。添加完成后点击「开始扫描」，软件会自动遍历目录、识别影片并匹配 TMDB 元数据。</p>
       <p>扫描完成后，返回首页即可看到海报墙。首次使用建议先添加 1-2 个文件夹测试识别效果，确认无误后再大规模导入。</p>
     </section>
 
-    <section id=”install”>
+    <section id="install">
       <h2>安装与环境</h2>
-      <h3 id=”install-req”>系统要求</h3>
+      <h3 id="install-req">系统要求</h3>
       <ul>
         <li><strong>操作系统</strong>：Windows 10 / 11（64 位），Windows 7/8 未测试</li>
         <li><strong>运行时</strong>：.NET 8 Desktop Runtime (x64)</li>
@@ -612,23 +612,23 @@ footer>*{position:relative;z-index:1}
         <li><strong>磁盘</strong>：至少 200MB 可用空间（不含影片文件）</li>
         <li><strong>显卡</strong>：支持 DirectX 11 的显卡（mpv 播放要求）</li>
       </ul>
-      <h3 id=”install-net”>网络依赖（可选）</h3>
+      <h3 id="install-net">网络依赖（可选）</h3>
       <ul>
         <li><strong>TMDB API</strong>：用于获取影片元数据（海报、简介、演员、评分）。需要 TMDB API Key（软件内置默认 Key，也可自行申请）</li>
         <li><strong>OMDb API</strong>：辅助元数据匹配，需要 OMDb API Key（可选）</li>
         <li><strong>OpenAI 兼容 API</strong>：用于 AI 画像生成与智能推荐。支持 OpenAI、DeepSeek 等兼容接口</li>
         <li><strong>OpenSubtitles API</strong>：在线字幕搜索（可选，需在设置中配置）</li>
       </ul>
-      <div class=”docs-note”>核心功能（扫描、搜刮、影视墙、本地播放、观影统计）完全离线可用。仅元数据在线匹配和 AI 功能需要网络连接。未配置 API 不影响基本使用。</div>
+      <div class="docs-note">核心功能（扫描、搜刮、影视墙、本地播放、观影统计）完全离线可用。仅元数据在线匹配和 AI 功能需要网络连接。未配置 API 不影响基本使用。</div>
     </section>
 
-    <section id=”scan”>
+    <section id="scan">
       <h2>扫描与搜刮</h2>
-      <h3 id=”scan-local”>本地文件夹扫描</h3>
+      <h3 id="scan-local">本地文件夹扫描</h3>
       <p>在扫描页面选择「本地目录」标签，点击「添加文件夹」选择包含影片文件的目录。XFVerse 会递归遍历所有子文件夹，自动区分电影和电视剧。</p>
       <p>扫描过程中可以实时看到识别进度。扫描完成后，已识别的影片会自动出现在首页媒体库中。未识别的影片会标记为「未识别」，可手动进行修正。</p>
       <p>支持添加多个文件夹同时管理。每个文件夹独立维护扫描状态，可以分别重新扫描或移除。</p>
-      <h3 id=”scan-naming”>文件命名建议</h3>
+      <h3 id="scan-naming">文件命名建议</h3>
       <p>为提高自动识别准确率，建议遵循以下命名规范：</p>
       <pre><code># 电影
 /电影/Inception (2010).mkv
@@ -640,7 +640,7 @@ footer>*{position:relative;z-index:1}
 /电视剧/Breaking Bad/Season 01/Breaking Bad S01E02.mp4
 /电视剧/权力的游戏/Season 01/Game of Thrones S01E01.mkv</code></pre>
       <p>关键要素：<strong>影片名称 + 年份</strong>（电影）或 <strong>剧名 + SxxExx</strong>（电视剧）。年份和季/集编号是自动匹配 TMDB 最重要的依据。</p>
-      <h3 id=”scan-fix”>手动修正</h3>
+      <h3 id="scan-fix">手动修正</h3>
       <p>自动识别可能因文件名不规范、年份缺失或同名影片而匹配错误。在媒体库中右键任意影片，选择「修正识别」打开修正弹窗：</p>
       <ul>
         <li>输入影片名称搜索 TMDB 数据库</li>
@@ -650,16 +650,16 @@ footer>*{position:relative;z-index:1}
       </ul>
     </section>
 
-    <section id=”series”>
+    <section id="series">
       <h2>电视剧支持</h2>
-      <h3 id=”series-naming”>识别规则与命名</h3>
+      <h3 id="series-naming">识别规则与命名</h3>
       <p>XFVerse 能够自动识别电视剧的季（Season）和集（Episode）结构。识别依赖文件名中的季/集标记，推荐格式如下：</p>
       <pre><code>S01E01  → 第 1 季第 1 集
 S02E05  → 第 2 季第 5 集
 1x01    → 第 1 季第 1 集（备选格式）</code></pre>
       <p>目录结构建议为 <code>剧名/Season XX/</code> 格式，软件会据此自动分组。如果未使用 Season 子目录，只要文件名包含 SxxExx 标记，仍可正确识别。</p>
-      <div class=”docs-note”>特殊分集（如 SP、OVA、剧场版）建议放在 <code>Season 00</code> 或 <code>Specials</code> 目录下，并在修正识别时手动绑定 TMDB 特殊集条目。</div>
-      <h3 id=”series-browse”>剧集浏览</h3>
+      <div class="docs-note">特殊分集（如 SP、OVA、剧场版）建议放在 <code>Season 00</code> 或 <code>Specials</code> 目录下，并在修正识别时手动绑定 TMDB 特殊集条目。</div>
+      <h3 id="series-browse">剧集浏览</h3>
       <p>在媒体库中点击任意电视剧海报进入剧集详情页，页面展示：</p>
       <ul>
         <li><strong>剧集信息</strong>：海报、简介、播出年份、类型标签</li>
@@ -667,7 +667,7 @@ S02E05  → 第 2 季第 5 集
         <li><strong>集列表</strong>：每集显示标题、时长、已看/未看状态</li>
         <li><strong>快速跳转</strong>：点击任意未看集可直接从该集开始播放</li>
       </ul>
-      <h3 id=”series-progress”>播放进度与状态同步</h3>
+      <h3 id="series-progress">播放进度与状态同步</h3>
       <p>系统会为每一集独立记录播放进度和观看状态：</p>
       <ul>
         <li>关闭播放器时自动保存当前播放位置</li>
@@ -675,7 +675,7 @@ S02E05  → 第 2 季第 5 集
         <li>播放超过 90% 自动标记为「已看」</li>
         <li>可在剧集详情页手动切换「已看/未看」状态</li>
       </ul>
-      <h3 id=”series-updates”>数据刷新</h3>
+      <h3 id="series-updates">数据刷新</h3>
       <p>重新扫描目录时，系统会自动检测新增的集数和文件：</p>
       <ul>
         <li>新发现的集数自动加入媒体库并标记为「未看」</li>
@@ -684,9 +684,9 @@ S02E05  → 第 2 季第 5 集
       </ul>
     </section>
 
-    <section id=”library”>
+    <section id="library">
       <h2>媒体库管理</h2>
-      <h3 id=”library-wall”>影视墙浏览</h3>
+      <h3 id="library-wall">影视墙浏览</h3>
       <p>首页以海报墙形式展示所有已识别影片。支持以下浏览方式：</p>
       <ul>
         <li><strong>全部影片</strong>：按添加时间或标题排序</li>
@@ -696,7 +696,7 @@ S02E05  → 第 2 季第 5 集
         <li><strong>搜索</strong>：顶部搜索栏支持按标题快速查找</li>
       </ul>
       <p>每张海报卡显示影片标题、年份、TMDB 评分。鼠标悬停可预览简介。</p>
-      <h3 id=”library-sources”>播放源管理</h3>
+      <h3 id="library-sources">播放源管理</h3>
       <p>每部影片可关联多个播放源（不同分辨率、不同编码版本、本地文件与 WebDAV 文件混合）：</p>
       <ul>
         <li>在影片详情页查看所有已关联的播放源</li>
@@ -705,10 +705,10 @@ S02E05  → 第 2 季第 5 集
         <li>默认播放源可在详情页中手动设置</li>
         <li>未关联任何播放源的影片标记为「无播放源」状态</li>
       </ul>
-      <h3 id=”library-episodes”>剧集视图</h3>
+      <h3 id="library-episodes">剧集视图</h3>
       <p>剧集详情以季为单位分组展示。每集显示标题、时长和播放进度条。已看集数显示绿色标记，当前正在看的集数高亮显示。</p>
       <p>点击任意集可直接播放，播放器会自动加载对应文件。播放完成后系统询问是否继续播放下一集。</p>
-      <h3 id=”library-theme”>浅色 / 深色主题</h3>
+      <h3 id="library-theme">浅色 / 深色主题</h3>
       <p>XFVerse 支持浅色和深色两种视觉主题，可在设置页面随时切换：</p>
       <ul>
         <li>浅色主题：淡粉白背景，白色卡片，适合日间使用</li>
@@ -717,10 +717,10 @@ S02E05  → 第 2 季第 5 集
       </ul>
     </section>
 
-    <section id=”discovery”>
+    <section id="discovery">
       <h2>发现与推荐</h2>
       <p>发现页是探索新内容的入口，包含榜单浏览和 AI 推荐两大模块。页面顶部可切换电影/电视剧分类。</p>
-      <h3 id=”disco-charts”>榜单浏览</h3>
+      <h3 id="disco-charts">榜单浏览</h3>
       <p>提供 TMDB 三大官方榜单，实时更新：</p>
       <ul>
         <li><strong>热门</strong>（Popular）：当前全球最受关注的影片</li>
@@ -728,7 +728,7 @@ S02E05  → 第 2 季第 5 集
         <li><strong>趋势</strong>（Trending）：今日/本周热度上升最快的影片</li>
       </ul>
       <p>点击任意榜单影片可查看详情并直接播放（如果本地已存在该影片）。未收录的影片显示为元数据卡片，可添加到「想看」列表。</p>
-      <h3 id=”disco-ai”>AI 推荐</h3>
+      <h3 id="disco-ai">AI 推荐</h3>
       <p>配置 AI API 后，系统会根据你的观影历史生成个性化推荐。推荐包含：</p>
       <ul>
         <li>推荐影片海报和基本信息</li>
@@ -736,7 +736,7 @@ S02E05  → 第 2 季第 5 集
         <li>「喜欢」和「不感兴趣」反馈按钮，帮助 AI 持续学习你的偏好</li>
       </ul>
       <p>AI 推荐需要至少 20 部已看影片才能生成有效画像。观影记录越多，推荐越精准。</p>
-      <h3 id=”disco-strategy”>推荐策略</h3>
+      <h3 id="disco-strategy">推荐策略</h3>
       <p>XFVerse 采用三路并行推荐策略，每轮生成 3 部推荐：</p>
       <ul>
         <li><strong>偏好洞察</strong>：基于观影 DNA 和类型偏好，推荐你可能喜欢但未看过的同类影片</li>
@@ -746,10 +746,10 @@ S02E05  → 第 2 季第 5 集
       <p>三路候选池经过水印去重后合并输出，确保每次推荐不重复且覆盖不同维度。</p>
     </section>
 
-    <section id=”stats”>
+    <section id="stats">
       <h2>观影统计</h2>
       <p>观影洞察页提供多维度的数据分析和可视化，帮助你了解自己的观影习惯和偏好。所有统计仅基于本地数据计算，不会上传。</p>
-      <h3 id=”stats-overview”>统计总览</h3>
+      <h3 id="stats-overview">统计总览</h3>
       <ul>
         <li><strong>已看</strong>：累计观看的影片总数（含电影和电视剧集）</li>
         <li><strong>喜爱</strong>：标记为「喜爱」的影片数量</li>
@@ -757,7 +757,7 @@ S02E05  → 第 2 季第 5 集
         <li><strong>不想看</strong>：标记为「不想看」的影片数量</li>
       </ul>
       <p>支持「全部」和「本月」两种时间范围。切换后所有统计卡和图表同步更新。趋势统一显示为「相比上个月」。</p>
-      <h3 id=”stats-calendar”>日历热力图</h3>
+      <h3 id="stats-calendar">日历热力图</h3>
       <p>日历视图以 GitHub 贡献图风格展示每日观影频率：</p>
       <ul>
         <li>每个格子代表一天，颜色越深表示当天观看的影片越多</li>
@@ -765,7 +765,7 @@ S02E05  → 第 2 季第 5 集
         <li>点击任意日期跳转到当天的观影历史记录</li>
         <li>支持切换不同月份查看</li>
       </ul>
-      <h3 id=”stats-charts”>图表分析</h3>
+      <h3 id="stats-charts">图表分析</h3>
       <p>系统提供以下维度的图表分析：</p>
       <ul>
         <li><strong>类型分布</strong>：饼图/环形图展示你最常看的电影类型</li>
@@ -774,13 +774,13 @@ S02E05  → 第 2 季第 5 集
         <li><strong>时段分析</strong>：按小时/星期展示你的观影时间段偏好</li>
         <li><strong>工作日 vs 周末</strong>：对比工作日和周末的观影量差异</li>
       </ul>
-      <div class=”docs-note”>统计图表需要至少观看 5 部影片才能生成有效数据。数据不足时显示「数据不足」提示而非空白图表。</div>
+      <div class="docs-note">统计图表需要至少观看 5 部影片才能生成有效数据。数据不足时显示「数据不足」提示而非空白图表。</div>
     </section>
 
-    <section id=”webdav”>
+    <section id="webdav">
       <h2>WebDAV 配置</h2>
       <p>XFVerse 支持通过 WebDAV 协议直接访问远程服务器上的影片文件，无需下载到本地即可浏览元数据和流式播放。</p>
-      <h3 id=”webdav-setup”>连接设置</h3>
+      <h3 id="webdav-setup">连接设置</h3>
       <p>在扫描页面选择「WebDAV」标签：</p>
       <ul>
         <li><strong>服务器地址</strong>：输入完整的 WebDAV 服务 URL（如 <code>https://example.com/dav/</code>）</li>
@@ -790,8 +790,8 @@ S02E05  → 第 2 季第 5 集
         <li>连接成功后，点击「开始扫描」遍历远程目录</li>
       </ul>
       <p>支持 HTTP 和 HTTPS 协议。自签名证书需要在系统证书存储中受信。</p>
-      <div class=”docs-note”>WebDAV 密码使用 AES 加密后存储在本地数据库中。完整 URL、账号和密码不会在任何日志、错误提示或 UI 中明文展示。</div>
-      <h3 id=”webdav-stream”>流式播放</h3>
+      <div class="docs-note">WebDAV 密码使用 AES 加密后存储在本地数据库中。完整 URL、账号和密码不会在任何日志、错误提示或 UI 中明文展示。</div>
+      <h3 id="webdav-stream">流式播放</h3>
       <p>通过 WebDAV 连接的影片可以直接流式播放：</p>
       <ul>
         <li>点击播放后，mpv 直接从远程服务器读取视频流</li>
@@ -802,10 +802,10 @@ S02E05  → 第 2 季第 5 集
       </ul>
     </section>
 
-    <section id=”ai”>
+    <section id="ai">
       <h2>AI 画像与推荐</h2>
       <p>AI 画像是 XFVerse 的核心特色功能。通过分析你的观影记录，系统能生成详细的观影人格报告和个性化推荐。此功能需要配置 OpenAI 兼容 API。</p>
-      <h3 id=”ai-persona”>观影人格</h3>
+      <h3 id="ai-persona">观影人格</h3>
       <p>系统基于观影记录生成以下维度的分析：</p>
       <ul>
         <li><strong>23 种观影人格</strong>：如「硬核科幻迷」「文艺片鉴赏家」「动作片狂热者」「纪录片爱好者」等</li>
@@ -813,8 +813,8 @@ S02E05  → 第 2 季第 5 集
         <li><strong>口味象限</strong>：四象限定位图（主流/小众 × 商业/艺术），可视化你的观影偏好位置</li>
         <li><strong>看得多 vs 真喜欢</strong>：对比你观看量最多的类型和评分最高的类型，发现「真正喜欢的」和「习惯性观看的」差异</li>
       </ul>
-      <div class=”docs-note”>观影人格需要至少 20 部已看影片才能生成。数据不足时显示「数据不足」状态和预计需要多少部影片。</div>
-      <h3 id=”ai-config”>API 配置</h3>
+      <div class="docs-note">观影人格需要至少 20 部已看影片才能生成。数据不足时显示「数据不足」状态和预计需要多少部影片。</div>
+      <h3 id="ai-config">API 配置</h3>
       <p>在设置页的「AI 配置」区域填写以下信息：</p>
       <pre><code>API Endpoint: https://api.openai.com/v1
 Model: gpt-4o
@@ -824,7 +824,7 @@ API Key: sk-xxxxxxxxxxxxxxxx
 API Endpoint: https://api.deepseek.com/v1
 Model: deepseek-chat</code></pre>
       <p>点击「测试连接」验证 API 可用性。配置成功后，AI 推荐和画像生成功能即刻启用。API 调用按实际使用量计费（取决于你的 API 服务商）。</p>
-      <h3 id=”ai-privacy”>隐私说明</h3>
+      <h3 id="ai-privacy">隐私说明</h3>
       <p>AI 功能的隐私保护机制：</p>
       <ul>
         <li><strong>数据脱敏</strong>：API 调用仅传输观影偏好特征（类型分布、评分统计、情绪标签比例），不传输影片名称、文件路径、个人身份信息</li>
