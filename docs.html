@@ -3,19 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>XFVerse — 智能观影发现平台</title>
-<meta name="description" content="XFVerse — 本地优先的智能观影发现平台。扫描、整理、统计、推荐，让私人片库更懂你。">
-<meta property="og:title" content="XFVerse — 智能观影发现平台">
-<meta property="og:description" content="面向本地硬盘与 WebDAV 用户的智能观影发现平台。会记录、会分析、会推荐，尊重本地数据隐私。">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="XFVerse — 智能观影发现平台">
+<title>XFVerse — 使用文档</title>
+<meta name="description" content="XFVerse 使用文档 — 安装配置、扫描搜刮、AI 推荐、WebDAV、观影统计等功能的详细说明。">
+<meta property="og:title" content="XFVerse — 使用文档">
+<meta name="twitter:title" content="XFVerse — 使用文档">
 <link rel="icon" href="assets/logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-
-<title>XFVerse — 使用文档</title>
 <style>
+
 /* Inter Display alias — Hanzo uses "Inter Display" as separate family */
 @font-face{font-family:"Inter Display";src:local("Inter");font-weight:300 700;font-style:normal;font-display:swap}
 @font-face{font-family:"Inter Display";src:local("Inter");font-weight:300 700;font-style:italic;font-display:swap}
@@ -415,7 +412,7 @@ footer>*{position:relative;z-index:1}
   .about-social{align-self:flex-start}
   .about-person-role{text-align:right}
 }
-</style>
+
 
 .docs-page{display:flex;gap:48px;max-width:1200px;margin:120px auto 80px;padding:0 48px}
 .docs-sidebar{width:200px;flex-shrink:0;position:sticky;top:100px;align-self:flex-start;display:flex;flex-direction:column;gap:2px}
@@ -434,13 +431,7 @@ footer>*{position:relative;z-index:1}
 .docs-content .docs-note{background:var(--accent-subtle);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 12px 12px 0;margin:20px 0;font-size:14px}
 .docs-content a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 .docs-content a:hover{color:var(--text)}
-
-@media(max-width:809px){
-  .docs-page{flex-direction:column;gap:32px;padding:0 24px;margin-top:100px}
-  .docs-sidebar{position:static;width:100%;flex-direction:row;flex-wrap:wrap;gap:6px;overflow-x:auto;padding-bottom:16px;border-bottom:1px solid var(--border)}
-  .docs-sidebar a{white-space:nowrap;font-size:12px;padding:6px 10px}
-  .docs-content h2{font-size:24px}
-}
+@media(max-width:809px){.docs-page{flex-direction:column;gap:32px;padding:0 24px;margin-top:100px}.docs-sidebar{position:static;width:100%;flex-direction:row;flex-wrap:wrap;gap:6px;overflow-x:auto;padding-bottom:16px;border-bottom:1px solid var(--border)}.docs-sidebar a{white-space:nowrap;font-size:12px;padding:6px 10px}.docs-content h2{font-size:24px}}
 </style>
 </head>
 <body>
@@ -499,13 +490,13 @@ footer>*{position:relative;z-index:1}
     <section id="quickstart">
       <h2>快速开始</h2>
       <p>XFVerse 是一款面向本地硬盘与 WebDAV 用户的智能观影发现平台。本文档将帮助你快速上手。</p>
-      <div class="docs-note">XFVerse 当前处于活跃开发阶段，基础功能永久免费。AI 画像与推荐为可选增强模块。</div>
+      <div class="docs-note">当前处于活跃开发阶段，基础功能永久免费。AI 画像与推荐为可选增强模块。</div>
       <h3>第一步：安装运行时</h3>
-      <p>下载并安装 <code>.NET 8 Desktop Runtime</code>（64 位）。安装包会自动检测运行环境，如未安装会提示下载。</p>
+      <p>下载并安装 <code>.NET 8 Desktop Runtime</code>（64 位）。安装包会自动检测运行环境。</p>
       <h3>第二步：下载 XFVerse</h3>
       <p>从 <a href="index.html#download">下载页面</a> 获取最新安装包，解压后运行 <code>XFVerse.exe</code>。</p>
       <h3>第三步：添加片源</h3>
-      <p>启动后进入扫描页，添加本地文件夹或配置 WebDAV 服务器地址，点击"开始扫描"即可自动识别影片。</p>
+      <p>启动后进入扫描页，添加本地文件夹或配置 WebDAV 服务器地址，开始扫描即可自动识别影片。</p>
     </section>
 
     <section id="install">
@@ -513,7 +504,7 @@ footer>*{position:relative;z-index:1}
       <h3>系统要求</h3>
       <ul><li>Windows 10 / 11（64 位）</li><li>.NET 8 Desktop Runtime</li><li>至少 200MB 可用磁盘空间</li></ul>
       <h3>网络依赖（可选）</h3>
-      <ul><li>TMDB / OMDb：用于自动获取影片元数据（海报、简介、演员）</li><li>OpenAI 兼容 API：用于 AI 画像与推荐功能（可选）</li></ul>
+      <ul><li>TMDB / OMDb：自动获取影片元数据（海报、简介、演员）</li><li>OpenAI 兼容 API：AI 画像与推荐（可选）</li></ul>
       <div class="docs-note">核心功能完全离线可用。仅元数据搜刮和 AI 功能需要网络连接。</div>
     </section>
 
@@ -522,14 +513,14 @@ footer>*{position:relative;z-index:1}
       <h3>本地文件夹扫描</h3>
       <p>在扫描页面选择"本地目录"，添加包含影片文件的文件夹。XFVerse 会递归扫描子目录，自动识别电影和电视剧。</p>
       <h3>文件命名建议</h3>
-      <p>为提高识别准确率，建议影片文件遵循以下命名规范：</p>
+      <p>为提高识别准确率，建议遵循以下命名规范：</p>
       <pre><code>电影名称 (年份).扩展名
 示例：Inception (2010).mkv
 
 电视剧/剧名/Season 01/剧名 S01E01.扩展名
 示例：Breaking Bad/Season 01/Breaking Bad S01E01.mp4</code></pre>
       <h3>手动修正</h3>
-      <p>如果自动识别结果不准确，可以在媒体库中右键影片，选择"修正识别"，手动搜索正确的 TMDB 条目进行绑定。</p>
+      <p>如果自动识别结果不准确，可在媒体库中右键影片选择"修正识别"，手动搜索正确的 TMDB 条目进行绑定。</p>
     </section>
 
     <section id="library">
@@ -537,7 +528,7 @@ footer>*{position:relative;z-index:1}
       <h3>影视墙浏览</h3>
       <p>首页以海报墙形式展示已识别的影片。支持按类型、年份、评分等维度筛选和排序。</p>
       <h3>播放源管理</h3>
-      <p>每部影片可关联多个播放源（本地文件、WebDAV 远程文件）。播放时自动选择默认源，也可手动切换。</p>
+      <p>每部影片可关联多个播放源（本地文件、WebDAV 远程文件）。播放时自动选择默认源。</p>
       <h3>浅色 / 深色主题</h3>
       <p>在设置中可切换浅色与深色双主题。播放器界面固定使用深色模式以保证沉浸感。</p>
     </section>
@@ -576,7 +567,7 @@ footer>*{position:relative;z-index:1}
       <h3>观影人格</h3>
       <p>系统基于观影记录生成 23 种观影人格类型，包含 6 维观影 DNA 分析和口味象限定位。</p>
       <h3>API 配置</h3>
-      <p>在设置页配置 OpenAI 兼容 API 端点、模型名称和 API Key。支持 OpenAI、DeepSeek 等兼容服务。</p>
+      <p>在设置页配置 OpenAI 兼容 API 端点、模型名称和 API Key。</p>
       <pre><code>API Endpoint: https://api.openai.com/v1
 Model: gpt-4o
 API Key: sk-xxxxxxxx</code></pre>
@@ -587,7 +578,7 @@ API Key: sk-xxxxxxxx</code></pre>
     <section id="faq-docs">
       <h2>常见问题</h2>
       <h3>XFVerse 收费吗？</h3>
-      <p>基础功能完全免费，包括扫描、搜刮、影视墙管理、本地播放与观影统计。AI 画像与推荐为可选增强模块。</p>
+      <p>基础功能完全免费，包括扫描、搜刮、影视墙管理、本地播放与观影统计。AI 画像与推荐为可选模块。</p>
       <h3>支持哪些影片格式？</h3>
       <p>基于 mpv 播放内核，支持 MKV、MP4、AVI、TS 等主流格式，以及 HDR、蓝光字幕、多音轨。</p>
       <h3>数据存储在哪里？</h3>
@@ -633,6 +624,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 
 
 <script>
+
 // ---- Menu Popover Toggle (Hanzo: compact top-right popover) ----
 (function(){const btn=document.getElementById('menuBtn'),overlay=document.getElementById('menuOverlay'),panel=overlay?.querySelector('.menu-panel');function close(){btn?.classList.remove('open');overlay?.classList.remove('open');btn?.setAttribute('aria-expanded','false')}function open(){btn?.classList.add('open');overlay?.classList.add('open');btn?.setAttribute('aria-expanded','true')}if(btn&&overlay){btn.setAttribute('aria-expanded','false');btn.addEventListener('click',e=>{e.stopPropagation();overlay.classList.contains('open')?close():open()});overlay.addEventListener('click',close);panel?.addEventListener('click',e=>e.stopPropagation());panel?.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()})}})();
 
@@ -645,8 +637,9 @@ document.querySelectorAll('.fade-up').forEach(e=>obs.observe(e));
 
 // ---- Smooth scroll anchor links ----
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const h=this.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t)window.scrollTo({top:t.getBoundingClientRect().top+pageYOffset-80,behavior:'smooth'})})});
-</script>
-// Scroll highlight for docs sidebar
+
+
+// Docs sidebar scroll highlight
 document.querySelectorAll('.docs-sidebar a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+pageYOffset-100,behavior:'smooth'})})});
 </script>
 </body>
