@@ -297,6 +297,15 @@ footer>*{position:relative;z-index:1}
 .grid-2 .shot:nth-child(3){transition-delay:.16s}.grid-2 .shot:nth-child(4){transition-delay:.24s}
 
 /* ============ RESPONSIVE ============ */
+@media(max-width:1200px){
+  .hero-slideshow{max-width:360px}
+}
+@media(max-width:1024px){
+  .intro-carousel{height:460px}
+  .process-cards{gap:8px}
+  .process-card{padding:32px 24px}
+  .profile-row{gap:48px}
+}
 @media(max-width:809px){
   .process-cards .process-connector{display:none}
   nav{padding:0 24px;top:12px}
@@ -342,13 +351,13 @@ footer>*{position:relative;z-index:1}
   <div class="hero-content">
     <div class="badge-red"><span class="dot"></span> Active Development · Windows 10 / 11</div>
 
-    <!-- Hero slideshow (Hanzo: 400x300 images, perspective carousel) -->
+    <!-- Hero slideshow (Hanzo: 400x300 images, auto-rotating) -->
     <div class="hero-slideshow">
       <div class="hero-slideshow-track" id="heroSlideshow">
         <img src="https://framerusercontent.com/images/0Y1cjcOdQp68PBw6G3HHfHz6TYo.jpg?width=400&height=300" alt="" loading="eager">
         <img src="https://framerusercontent.com/images/jSslhcqo8HKNjUvPEceq7bhbY.jpg?width=400&height=300" alt="" loading="lazy">
-        <img src="https://framerusercontent.com/images/0Y1cjcOdQp68PBw6G3HHfHz6TYo.jpg?width=400&height=300" alt="" loading="lazy">
-        <img src="https://framerusercontent.com/images/jSslhcqo8HKNjUvPEceq7bhbY.jpg?width=400&height=300" alt="" loading="lazy">
+        <img src="https://framerusercontent.com/images/670uUrkwoRnzhCl9b3kEMwUmgE4.jpg?width=400&height=300" alt="" loading="lazy">
+        <img src="https://framerusercontent.com/images/J4Ox47KYv4g8Lb2C0PXNkjDaA.jpg?width=400&height=300" alt="" loading="lazy">
       </div>
     </div>
 
