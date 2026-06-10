@@ -245,32 +245,33 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .shot .shot-cap .cap-title{font-size:16px;font-weight:500;color:var(--text)}
 .shot .shot-cap .cap-tag{font:400 10px "Fragment Mono",monospace;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em}
 
-/* ============ ABOUT (Hanzo: large image card + bio + experience list) ============ */
+/* ============ ABOUT (Hanzo: 1:1 grid, image + light info, bio + vertical-line experience) ============ */
 .about-wrap{max-width:1440px}
-.about-content{width:100%;display:grid;grid-template-columns:minmax(320px,1fr) minmax(0,2fr);gap:60px;align-items:start}
-.about-left{display:flex;flex-direction:column;gap:0;align-self:end}
+.about-content{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:end}
+.about-left{display:flex;flex-direction:column;gap:24px;align-self:end}
 
-/* Left: large 3:2 image card */
+/* Left: 3:2 image card */
 .about-image-card{position:relative;width:100%;aspect-ratio:3/2;border-radius:24px;overflow:hidden;background:rgba(0,0,0,.04);box-shadow:rgba(255,255,255,.25) 0 0 0 8px,rgba(0,0,0,.08) 12px 16px 16px 0}
 .about-image-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 
-/* Image info card (below image, glass style) */
-.about-image-info{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-radius:18px;background:rgba(255,255,255,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.75);margin-top:16px}
-.about-person{display:flex;flex-direction:column;gap:4px}
-.about-person strong{font:600 14px/1.3 "Inter",sans-serif;color:var(--text)}
-.about-person span{font:400 12px/1.4 "Inter",sans-serif;color:var(--text-secondary)}
-.about-social{display:flex;align-items:center;gap:12px}
-.about-social a{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);background:rgba(255,255,255,.65);border:1px solid rgba(0,0,0,.08);transition:all .2s}
-.about-social a:hover{color:var(--accent);background:#fff;border-color:rgba(0,0,0,.14)}
-.about-social svg{width:15px;height:15px}
+/* Image info — lightweight, pulled up below image */
+.about-image-info{width:100%;display:flex;flex-direction:column;align-items:stretch;gap:8px;padding:0;margin-top:-47px;border-radius:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border:none;position:relative;z-index:2}
+.about-person-name{width:100%;text-align:right;font:600 14px/1.4 "Inter",sans-serif;color:var(--text)}
+.about-info-bottom{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.about-person-role{flex:1;text-align:right;font:400 12px/1.4 "Inter",sans-serif;color:var(--text-secondary)}
+.about-social{display:flex;align-items:center;gap:8px}
+.about-social a{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.5);background:transparent;border:none;transition:color .2s}
+.about-social a:hover{color:var(--accent);background:transparent}
+.about-social svg{width:16px;height:16px}
 
-/* Right: bio + experience */
-.about-main{display:flex;flex-direction:column;gap:28px;padding-top:4px}
-.about-icon{width:36px;height:36px;color:var(--accent);display:flex;align-items:center;justify-content:center}
-.about-icon svg{width:36px;height:36px}
-.about-bio{max-width:720px;font:400 clamp(22px,2.4vw,32px)/1.35 "Inter Display","Inter","PingFang SC",sans-serif;letter-spacing:-.025em;color:var(--text)}
-.about-experience{width:100%;display:flex;flex-direction:column;margin-top:8px;border-top:1px solid rgba(0,0,0,.1)}
-.about-exp-item{display:grid;grid-template-columns:170px 1fr auto;align-items:baseline;gap:36px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.1)}
+/* Right: bio + small icon + vertical-line experience */
+.about-main{display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding-top:0;height:100%;align-self:stretch}
+.about-text-top{width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+.about-bio{flex:1;max-width:550px;font:400 clamp(22px,2.2vw,30px)/1.35 "Inter Display","Inter","PingFang SC",sans-serif;letter-spacing:-.025em;color:var(--text);text-wrap:balance}
+.about-icon{width:16px;height:16px;flex:0 0 16px;color:var(--accent);display:flex;align-items:center;justify-content:center;position:sticky;top:96px}
+.about-icon svg{width:16px;height:16px}
+.about-experience{width:100%;display:flex;flex-direction:column;margin-top:0;padding-left:60px;border-left:1px solid rgba(0,0,0,.25);border-top:none}
+.about-exp-item{display:grid;grid-template-columns:1fr 1fr auto;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.1)}
 .about-exp-item .exp-role,.about-exp-item .exp-company,.about-exp-item .exp-date{font:400 12px/1.4 "Fragment Mono","Inter",monospace;letter-spacing:.02em}
 .about-exp-item .exp-role{color:var(--text);text-align:left}
 .about-exp-item .exp-company{color:var(--text-secondary);text-align:left}
@@ -372,8 +373,12 @@ footer>*{position:relative;z-index:1}
   section{padding:80px 24px}.hero{padding:140px 24px 80px}.sec-head{margin-bottom:56px}
   .grid-2,.grid-3,.process-cards,.testimonials{flex-direction:column}
   .about-content{grid-template-columns:1fr;gap:40px;align-items:start}
-  .about-image-info{padding:14px 16px}
-  .about-main{gap:24px}.about-bio{font-size:24px}
+  .about-left{gap:20px}
+  .about-image-info{margin-top:0}
+  .about-main{gap:32px}
+  .about-text-top{gap:16px}
+  .about-bio{max-width:none;font-size:24px}
+  .about-experience{padding-left:0;border-left:none;border-top:1px solid rgba(0,0,0,.1)}
   .about-exp-item{grid-template-columns:1fr;gap:4px}
   .about-exp-item .exp-date{text-align:left}
   .dl-meta{flex-direction:column;gap:16px}.dl-card{padding:44px 32px}
@@ -398,9 +403,10 @@ footer>*{position:relative;z-index:1}
   .process-card{padding:28px}
   .process-card .p-num{font-size:56px}
   .process-card p{font-size:14px}
-  .about-image-info{flex-direction:column;align-items:flex-start;gap:10px}
-  .about-social{gap:10px}
   .about-bio{font-size:21px}
+  .about-info-bottom{flex-direction:column;align-items:flex-end}
+  .about-social{align-self:flex-start}
+  .about-person-role{text-align:right}
 }
 </style>
 </head>
@@ -592,12 +598,12 @@ footer>*{position:relative;z-index:1}
   </div>
 </section>
 
-<!-- ====== ABOUT (Hanzo: large image card + bio + experience list) ====== -->
+<!-- ====== ABOUT (Hanzo: 1:1 grid, light info, vertical-line exp) ====== -->
 <section id="about">
   <div class="sec-wrap-wide about-wrap">
     <div class="sec-head">
-      <div class="sec-tag"><em>About XFVerse</em></div>
-      <h2>让每部电影，<span style="color:rgba(0,0,0,.5)">找到懂它的人</span></h2>
+      <div class="sec-tag"><em>Our Projects</em></div>
+      <h2>让每部电影找到 <span style="color:rgba(0,0,0,.5)">懂它的人</span></h2>
     </div>
     <div class="about-content">
       <div class="about-left">
@@ -605,25 +611,26 @@ footer>*{position:relative;z-index:1}
           <img src="https://framerusercontent.com/images/zRVCa2eOgJIf1mJK5PYcBLrYI.png?width=1536&height=1024" alt="XFVerse" loading="lazy">
         </div>
         <div class="about-image-info fade-up">
-          <div class="about-person">
-            <strong>XFVerse</strong>
-            <span>开源智能观影发现平台</span>
-          </div>
-          <div class="about-social">
-            <a href="https://github.com/jdxbb/XFVerse" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg></a>
-            <a href="mailto:jdxbb@stu2023.jnu.edu.cn" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
-            <a href="https://github.com/jdxbb/XFVerse/issues" target="_blank" aria-label="Issues"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></a>
+          <div class="about-person-name">XFVerse</div>
+          <div class="about-info-bottom">
+            <div class="about-social">
+              <a href="https://github.com/jdxbb/XFVerse" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg></a>
+              <a href="mailto:jdxbb@stu2023.jnu.edu.cn" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+            </div>
+            <div class="about-person-role">开源智能观影发现平台</div>
           </div>
         </div>
       </div>
       <div class="about-main fade-up">
-        <div class="about-icon"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M216 72h-84.69L104 44.69A15.88 15.88 0 0 0 92.69 40H40a16 16 0 0 0-16 16v144.62A15.41 15.41 0 0 0 39.39 216h177.5A15.13 15.13 0 0 0 232 200.89V88a16 16 0 0 0-16-16ZM40 56h52.69l16 16H40Z"/></svg></div>
-        <p class="about-bio">本地优先的智能观影发现平台。媒体库、搜刮、统计、AI 推荐——让片库从「存着」变成「懂你」。</p>
+        <div class="about-text-top">
+          <p class="about-bio">XFVerse 是面向本地硬盘与 WebDAV 用户的智能观影发现平台。它把媒体库管理、元数据搜刮、观影统计和 AI 推荐整合在一个本地优先的桌面应用中，让私人片库从「存着」变成「懂你」。</p>
+          <div class="about-icon" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M236.8 132.8a8 8 0 0 1-2.4 5.7l-96 96a8 8 0 0 1-11.3-11.3L209.9 144H32a8 8 0 0 1 0-16h177.9l-82.8-82.8a8 8 0 0 1 11.3-11.3l96 96a8 8 0 0 1 2.4 2.9Z"/></svg></div>
+        </div>
         <div class="about-experience">
-          <div class="about-exp-item"><span class="exp-role">核心平台</span><span class="exp-company">XFVerse · .NET 8 + WPF desktop app</span><span class="exp-date">2026 → Now</span></div>
-          <div class="about-exp-item"><span class="exp-role">AI 引擎</span><span class="exp-company">23 种观影人格 · 6 维 DNA · 三路推荐</span><span class="exp-date">Core</span></div>
-          <div class="about-exp-item"><span class="exp-role">本地优先</span><span class="exp-company">SQLite 数据库 · 核心数据不上传</span><span class="exp-date">Privacy</span></div>
-          <div class="about-exp-item"><span class="exp-role">播放能力</span><span class="exp-company">mpv 内核 · 本地文件夹 · WebDAV 远程</span><span class="exp-date">Media</span></div>
+          <div class="about-exp-item"><span class="exp-role">Open Source Project</span><span class="exp-company">XFVerse</span><span class="exp-date">2026 → Now</span></div>
+          <div class="about-exp-item"><span class="exp-role">AI Recommendation</span><span class="exp-company">23 种观影人格 · 6 维 DNA · 三路推荐</span><span class="exp-date">Core</span></div>
+          <div class="about-exp-item"><span class="exp-role">Local-first Storage</span><span class="exp-company">SQLite 数据库 · 核心数据不上传</span><span class="exp-date">Privacy</span></div>
+          <div class="about-exp-item"><span class="exp-role">Player &amp; Sources</span><span class="exp-company">mpv 内核 · 本地文件夹 · WebDAV 远程</span><span class="exp-date">Media</span></div>
         </div>
       </div>
     </div>
