@@ -639,13 +639,7 @@ footer>*{position:relative;z-index:1}
 <section id="faq">
   <div class="sec-wrap">
     <div class="sec-head"><div class="sec-tag"><em>FAQ</em></div><h2>常见问题</h2></div>
-    <div class="faq-cta-card" style="margin-bottom:0;width:100%">
-      <h3 style="font-size:20px;font-weight:400">还有疑问？</h3>
-      <p style="font-size:15px;color:var(--text-secondary);text-align:center">查阅文档或通过 GitHub Issues 联系我们</p>
-      <a href="https://github.com/jdxbb/XFVerse" class="btn btn-dark btn-lg" target="_blank" style="margin-top:4px">访问 GitHub</a>
-      <p style="font-size:13px;color:var(--text-tertiary);margin-top:-4px">或邮件联系：xfverse@example.com</p>
-    </div>
-    <div class="faq-list" style="margin-top:32px">
+    <div class="faq-list">
       <div class="faq-item"><button class="faq-q">XFVerse 收费吗？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>基础功能完全免费：扫描、搜刮、影视墙、本地播放、观影统计。AI 画像与推荐为可选模块，需自行配置 API 端点。</p></div></div>
       <div class="faq-item"><button class="faq-q">支持哪些媒体来源？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>支持本地文件夹与 WebDAV 两种来源。自动通过 TMDB / OMDb 获取海报、简介、演员等元数据。</p></div></div>
       <div class="faq-item"><button class="faq-q">AI 推荐如何工作？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>三路并行策略：观影 DNA 偏好洞察、跨类型探索、评分与情绪匹配。候选池自动去重，每批推荐 3 部，附理由。</p></div></div>
@@ -653,6 +647,12 @@ footer>*{position:relative;z-index:1}
       <div class="faq-item"><button class="faq-q">支持哪些影片格式？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>基于 mpv 内核，支持 MKV、MP4、AVI、TS 等主流格式，以及 HDR、蓝光字幕、多音轨。</p></div></div>
       <div class="faq-item"><button class="faq-q">多台电脑之间能同步吗？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>通过 WebDAV 可跨设备访问片库与流式播放。本地数据库暂不支持自动同步，未来版本计划加入。</p></div></div>
       <div class="faq-item"><button class="faq-q">支持插件或扩展吗？<span class="plus"><svg viewBox="0 0 256 256"><path d="M224 128a8 8 0 0 1-8 8H136v80a8 8 0 0 1-16 0V136H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"/></svg></span></button><div class="faq-a"><p>未来版本将开放插件 API，支持自定义数据源、推荐策略与界面主题。欢迎关注 GitHub 路线图。</p></div></div>
+    </div>
+    <div class="faq-cta-card" style="margin-top:32px;width:100%">
+      <h3 style="font-size:20px;font-weight:400">还有疑问？</h3>
+      <p style="font-size:15px;color:var(--text-secondary);text-align:center">查阅文档或通过 GitHub Issues 联系我们</p>
+      <a href="https://github.com/jdxbb/XFVerse" class="btn btn-dark btn-lg" target="_blank" style="margin-top:4px">访问 GitHub</a>
+      <p style="font-size:13px;color:var(--text-tertiary);margin-top:-4px">或邮件联系：xfverse@example.com</p>
     </div>
   </div>
 </section>
