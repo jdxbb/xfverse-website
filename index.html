@@ -247,8 +247,8 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 
 /* ============ ABOUT (Hanzo: 1:1 grid, image + light info, bio + vertical-line experience) ============ */
 .about-wrap{max-width:1440px}
-.about-content{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:60px;align-items:end}
-.about-left{display:flex;flex-direction:column;gap:24px;align-self:end}
+.about-content{width:100%;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,7fr);gap:60px;align-items:start}
+.about-left{display:flex;flex-direction:column;gap:24px;align-self:start}
 
 /* Left: 3:2 image card */
 .about-image-card{position:relative;width:100%;aspect-ratio:3/2;border-radius:24px;overflow:hidden;background:rgba(0,0,0,.04);box-shadow:rgba(255,255,255,.25) 0 0 0 8px,rgba(0,0,0,.08) 12px 16px 16px 0;transform:rotate(-2deg);will-change:transform}
@@ -267,7 +267,7 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 /* Right: bio + small icon + vertical-line experience */
 .about-main{display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding-top:0;height:100%;align-self:stretch}
 .about-text-top{width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
-.about-bio{flex:1;max-width:550px;font:400 clamp(22px,2.2vw,30px)/1.35 "Inter Display","Inter","PingFang SC",sans-serif;letter-spacing:-.025em;color:var(--text);text-wrap:balance}
+.about-bio{flex:1;max-width:550px;font:400 clamp(15px,1.5vw,18px)/1.6 "Inter","PingFang SC",sans-serif;color:var(--text-secondary);text-wrap:balance}
 .about-icon{width:16px;height:16px;flex:0 0 16px;color:var(--accent);display:flex;align-items:center;justify-content:center;position:sticky;top:96px}
 .about-icon svg{width:16px;height:16px}
 .about-experience{width:100%;display:flex;flex-direction:column;margin-top:0;padding-left:60px;border-left:1px solid rgba(0,0,0,.25);border-top:none}
@@ -377,7 +377,7 @@ footer>*{position:relative;z-index:1}
   .about-image-info{margin-top:0}
   .about-main{gap:32px}
   .about-text-top{gap:16px}
-  .about-bio{max-width:none;font-size:24px}
+  .about-bio{max-width:none;font-size:16px}
   .about-experience{padding-left:0;border-left:none;border-top:1px solid rgba(0,0,0,.1)}
   .about-exp-item{grid-template-columns:1fr;gap:4px}
   .about-exp-item .exp-date{text-align:left}
@@ -403,7 +403,7 @@ footer>*{position:relative;z-index:1}
   .process-card{padding:28px}
   .process-card .p-num{font-size:56px}
   .process-card p{font-size:14px}
-  .about-bio{font-size:21px}
+  .about-bio{font-size:15px}
   .about-info-bottom{flex-direction:column;align-items:flex-end}
   .about-social{align-self:flex-start}
   .about-person-role{text-align:right}
