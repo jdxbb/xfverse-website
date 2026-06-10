@@ -110,7 +110,10 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .hero{min-height:100vh;justify-content:center;text-align:center;padding:180px 48px 80px}
 .hero-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:24px;max-width:960px}
 
-/* No hero slideshow — Hanzo hero images are in the intro section */
+/* Hero slideshow (Hanzo: 400x300 images, horizontal 3D carousel) */
+.hero-slideshow{width:100%;max-width:400px;margin:0 auto 8px;overflow:hidden;border-radius:var(--radius-sm);position:relative}
+.hero-slideshow-track{display:flex;will-change:transform;transition:transform .8s var(--ease)}
+.hero-slideshow-track img{width:100%;flex-shrink:0;aspect-ratio:4/3;object-fit:cover}
 
 .badge-red{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:100px;background:var(--accent);color:#fff;font:400 11px "Fragment Mono",monospace;letter-spacing:.04em;text-transform:uppercase}
 .badge-red .dot{width:6px;height:6px;background:#8cd68f;border-radius:50%;flex-shrink:0}
@@ -278,10 +281,11 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
 .fade-up{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .fade-up.on{opacity:1;transform:translateY(0)}
 .hero .badge-red{animation:fade-in-up .7s .1s var(--ease) both}
-.hero h1{animation:fade-in-up .7s .2s var(--ease) both}
-.hero .ticker-wrap{animation:fade-in-up .7s .3s var(--ease) both}
-.hero .desc{animation:fade-in-up .7s .4s var(--ease) both}
-.hero .hero-ctas{animation:fade-in-up .7s .5s var(--ease) both}
+.hero .hero-slideshow{animation:fade-in-up .7s .15s var(--ease) both}
+.hero h1{animation:fade-in-up .7s .25s var(--ease) both}
+.hero .ticker-wrap{animation:fade-in-up .7s .35s var(--ease) both}
+.hero .desc{animation:fade-in-up .7s .45s var(--ease) both}
+.hero .hero-ctas{animation:fade-in-up .7s .55s var(--ease) both}
 @keyframes fade-in-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .grid-3 .card:nth-child(1),.process-cards .process-card:nth-child(1){transition-delay:0s}
 .grid-3 .card:nth-child(2),.process-cards .process-card:nth-child(2){transition-delay:.06s}
@@ -301,10 +305,12 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
   .dl-meta{flex-direction:column;gap:16px}.dl-card{padding:44px 32px}
   footer{padding:56px 24px 28px;margin-top:56px}.ft-links{gap:24px}
   .exp-item{grid-template-columns:1fr;gap:4px}.intro-carousel{margin-bottom:40px}
+  .hero-slideshow{max-width:300px}
   .trusted-ticker{gap:32px}
 }
 @media(max-width:480px){
   .process-card{padding:32px 24px}
+  .hero-slideshow{max-width:260px}
 }
 </style>
 </head>
@@ -333,6 +339,16 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
   <div class="hero-content">
     <div class="badge-red"><span class="dot"></span> Active Development · Windows 10 / 11</div>
 
+    <!-- Hero slideshow (Hanzo: 400x300 images, perspective carousel) -->
+    <div class="hero-slideshow">
+      <div class="hero-slideshow-track" id="heroSlideshow">
+        <img src="https://framerusercontent.com/images/0Y1cjcOdQp68PBw6G3HHfHz6TYo.jpg?width=400&height=300" alt="" loading="eager">
+        <img src="https://framerusercontent.com/images/jSslhcqo8HKNjUvPEceq7bhbY.jpg?width=400&height=300" alt="" loading="lazy">
+        <img src="https://framerusercontent.com/images/0Y1cjcOdQp68PBw6G3HHfHz6TYo.jpg?width=400&height=300" alt="" loading="lazy">
+        <img src="https://framerusercontent.com/images/jSslhcqo8HKNjUvPEceq7bhbY.jpg?width=400&height=300" alt="" loading="lazy">
+      </div>
+    </div>
+
     <h1>你的私人<br>观影助手</h1>
 
     <!-- Ticker (Hanzo: logo/image strip between heading and desc) -->
@@ -343,13 +359,18 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
       </div>
     </div>
 
+    <!-- Trusted by (Hanzo: inside Hero, logo strip) -->
+    <div style="display:flex;gap:48px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:8px">
+      <span style="font:400 11px 'Fragment Mono',monospace;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.06em">Trusted by Leaders</span>
+      <span style="font:400 13px 'Inter',sans-serif;color:var(--text-tertiary)">TMDB</span>
+      <span style="font:400 13px 'Inter',sans-serif;color:var(--text-tertiary)">OpenAI</span>
+      <span style="font:400 13px 'Inter',sans-serif;color:var(--text-tertiary)">DeepSeek</span>
+    </div>
+
     <p class="desc">面向本地硬盘与 WebDAV 用户的智能观影发现平台。<br>会记录、会分析、会推荐，尊重本地数据隐私。</p>
 
     <div class="hero-ctas">
-      <div class="btn-group">
-        <a href="#download" class="btn btn-primary btn-lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 免费下载</a>
-        <a href="https://github.com/jdxbb/XFVerse" class="btn btn-outline btn-lg" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg> GitHub</a>
-      </div>
+      <a href="#download" class="btn btn-primary btn-lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 免费下载</a>
     </div>
   </div>
 </section>
@@ -595,6 +616,9 @@ mo.addEventListener('click',e=>{if(!mp.contains(e.target)){mo.classList.remove('
 document.addEventListener('click',e=>{if(mo.classList.contains('open')&&!mb.contains(e.target)&&!mp.contains(e.target)){mo.classList.remove('open');mb.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
 mp.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mo.classList.remove('open');mb.classList.remove('open');mb.setAttribute('aria-expanded','false')}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mo.classList.contains('open')){mo.classList.remove('open');mb.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+
+// ---- Hero Slideshow ----
+(function(){const t=document.getElementById('heroSlideshow');if(!t)return;const s=t.children;let i=0;if(s.length<2)return;setInterval(()=>{i=(i+1)%s.length;t.style.transform='translateX(-'+(i*100)+'%)'},3000)})();
 
 // ---- FAQ Accordion ----
 document.querySelectorAll('.faq-q').forEach(b=>{b.addEventListener('click',()=>{const i=b.closest('.faq-item'),o=i.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(e=>e.classList.remove('open'));if(!o)i.classList.add('open')})});
