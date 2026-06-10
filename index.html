@@ -149,18 +149,32 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .grid-3{display:flex;gap:10px;width:100%}
 .grid-2+.grid-2,.grid-3+.grid-3{margin-top:10px}
 
-/* ============ INTRO: IMAGE CAROUSEL + TAG + PILLS + PILL BTN (Hanzo order) ============ */
-/* ---- Carousel (Hanzo exact: 2 UL columns, each in <section>, dark bg + vignette) ---- */
-.intro-carousel{display:flex;gap:24px;width:100%;max-width:1440px;border-radius:var(--radius-md);overflow:hidden;margin-bottom:48px;position:relative;background:#0B0B0D;height:560px;place-items:center}
-.intro-carousel::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.35) 100%);border-radius:inherit}
-.intro-carousel section{flex:1;min-width:0;overflow:hidden;position:relative;z-index:1;height:100%;display:flex;place-items:center}
-.intro-carousel ul{display:flex;flex-direction:column;gap:24px;width:100%;margin:0;padding:0;list-style:none;animation:scroll-up 40s linear infinite;will-change:transform}
-.intro-carousel ul:hover{animation-play-state:paused}
+/* ============ INTRO: IMAGE CAROUSEL + TAG + PILLS (Hanzo order) ============ */
+/* Section spacing */
+#features{padding:0 120px 120px}
+#features .sec-wrap-wide{max-width:1440px}
+
+/* ---- Carousel (Hanzo: tall immersive container, 120vh) ---- */
+.intro-carousel{display:block;width:100%;max-width:1440px;height:120vh;min-height:760px;max-height:1100px;background:#2b2b2b;border-radius:24px;overflow:hidden;position:relative;margin-bottom:96px;box-shadow:0 0 0 8px rgba(255,255,255,.25)}
+.intro-carousel::after{content:"";position:absolute;top:0;left:0;right:0;height:75%;z-index:2;pointer-events:none;background:linear-gradient(180deg,#2b2b2b 0%,rgba(43,43,43,0) 100%)}
+
+/* Tickers container (absolute positioned, overflows top) */
+.intro-tickers{position:absolute;z-index:1;inset:-400px 0 0 0;display:flex;gap:48px;padding:0 48px;align-items:flex-start;overflow:hidden}
+.intro-tickers>section{flex:1 0 0;width:1px;height:100%;overflow:hidden;position:relative;display:flex;align-items:flex-start}
+
+/* Image columns */
+.intro-carousel ul{display:flex;flex-direction:column;gap:24px;width:100%;margin:0;padding:0;list-style:none;animation:scroll-up 42s linear infinite;will-change:transform}
+.intro-tickers section:nth-child(2) ul{animation-duration:46s;animation-delay:-12s}
 .intro-carousel li{width:100%;flex-shrink:0}
-.intro-carousel .carousel-img{width:100%;flex-shrink:0;position:relative;aspect-ratio:4/3}
+.intro-carousel .carousel-img{width:100%;max-width:560px;aspect-ratio:4/3;border-radius:16px;overflow:hidden;position:relative}
 .intro-carousel .carousel-img div{position:absolute;border-radius:inherit;inset:0}
 .intro-carousel .carousel-img img{display:block;width:100%;height:100%;border-radius:inherit;object-position:center;object-fit:cover}
 @keyframes scroll-up{0%{transform:translateY(0)}100%{transform:translateY(calc(-50% - 12px))}}
+
+/* Center glass button */
+.intro-center-btn{position:absolute;z-index:3;top:50%;left:50%;width:128px;height:128px;transform:translate(-50%,-50%);border-radius:213px;border:1px solid #fff;background:rgba(255,255,255,.75);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;color:#000;text-decoration:none;transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.intro-center-btn svg{width:32px;height:32px;flex-shrink:0}
+.intro-center-btn:hover{background:rgba(255,255,255,.95);transform:translate(-50%,-50%) scale(1.04);box-shadow:0 8px 24px rgba(0,0,0,.08)}
 
 .pill-link-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:213px;border:1px solid #fff;background:rgba(255,255,255,.75);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font:600 16px "Inter",sans-serif;color:var(--text);text-decoration:none;margin-top:48px;transition:all .3s var(--ease);box-shadow:0 2px 12px rgba(0,0,0,.04)}
 .pill-link-btn:hover{background:rgba(255,255,255,.95);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
@@ -317,7 +331,12 @@ footer>*{position:relative;z-index:1}
   .profile-row{flex-direction:column;gap:40px}.profile-img{width:200px;aspect-ratio:1}
   .dl-meta{flex-direction:column;gap:16px}.dl-card{padding:44px 32px}
   footer{padding:56px 24px 28px;margin-top:56px}.ft-links{gap:24px}
-  .exp-item{grid-template-columns:1fr;gap:4px}.intro-carousel{margin-bottom:40px}
+  #features{padding:0 24px 80px}
+  .intro-carousel{height:80vh;min-height:560px;margin-bottom:64px}
+  .intro-tickers{inset:-240px 0 0 0;gap:24px;padding:0 24px}
+  .intro-center-btn{width:96px;height:96px}
+  .intro-center-btn svg{width:26px;height:26px}
+  .exp-item{grid-template-columns:1fr;gap:4px}
   .hero-heading{gap:10px}
   .hero-inline-slideshow{width:112px;height:84px;border-radius:28px}
   .trusted-ticker{gap:32px}
@@ -392,8 +411,9 @@ footer>*{position:relative;z-index:1}
 <section id="features">
   <div class="sec-wrap-wide">
 
-    <!-- Carousel (Hanzo: 2 <section> columns, each with <ul>, 12 li) -->
+    <!-- Carousel (Hanzo: tall immersive tickers + center glass button) -->
     <div class="intro-carousel">
+      <div class="intro-tickers">
       <section><ul>
         <li><div class="carousel-img"><div><img src="https://framerusercontent.com/images/670uUrkwoRnzhCl9b3kEMwUmgE4.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
         <li><div class="carousel-img"><div><img src="https://framerusercontent.com/images/J4Ox47KYv4g8Lb2C0PXNkjDaA.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
@@ -422,6 +442,10 @@ footer>*{position:relative;z-index:1}
         <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/cpbJvQoTTkomFOd8RSNsHF3b8.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
         <li aria-hidden="true"><div class="carousel-img"><div><img src="https://framerusercontent.com/images/TWgBR6dpy8VfcVcGIy2oyBYzyY.jpg?width=1120&height=840" alt="" loading="lazy"></div></div></li>
       </ul></section>
+      </div>
+      <a href="#projects" class="intro-center-btn" aria-label="查看界面预览">
+        <svg width="32" height="32" viewBox="0 0 256 256" fill="currentColor"><path d="M216 72h-84.69L104 44.69A15.88 15.88 0 0 0 92.69 40H40a16 16 0 0 0-16 16v144.62A15.41 15.41 0 0 0 39.39 216h177.5A15.13 15.13 0 0 0 232 200.89V88a16 16 0 0 0-16-16ZM40 56h52.69l16 16H40Z"/></svg>
+      </a>
     </div>
   </div>
   <div class="sec-wrap">
@@ -442,12 +466,6 @@ footer>*{position:relative;z-index:1}
       <div class="service-pill fade-up" style="transform:rotate(-4deg)"><div class="pill-icon" style="background:#05a9ff;color:#f8ffbf"><svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor"><path d="M168 112a56 56 0 1 1-56-56 56 56 0 0 1 56 56Zm61.66 117.66a8 8 0 0 1-11.32 0l-50.06-50.07a88 88 0 1 1 11.32-11.31l50.06 50.06a8 8 0 0 1 0 11.32ZM112 184a72 72 0 1 0-72-72 72.08 72.08 0 0 0 72 72Z"/></svg></div><span class="pill-label">观影统计</span></div>
       <div class="service-pill fade-up" style="transform:rotate(3deg)"><div class="pill-icon" style="background:#ff5e00;color:#fff3c2"><svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor"><path d="M216 56v60a4 4 0 0 1-4 4h-76V44a4 4 0 0 1 4-4h60a16 16 0 0 1 16 16ZM116 40H56a16 16 0 0 0-16 16v60a4 4 0 0 0 4 4h76V44a4 4 0 0 0-4-4Zm96 96h-76v76a4 4 0 0 0 4 4h60a16 16 0 0 0 16-16v-60a4 4 0 0 0-4-4ZM40 140v60a16 16 0 0 0 16 16h60a4 4 0 0 0 4-4v-76H44a4 4 0 0 0-4 4Z"/></svg></div><span class="pill-label">用户画像</span></div>
     </div>
-
-    <!-- Pill link button (Hanzo: positioned after pills) -->
-    <a href="#projects" class="pill-link-btn">
-      <svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor"><path d="M216 72h-84.69L104 44.69A15.88 15.88 0 0 0 92.69 40H40a16 16 0 0 0-16 16v144.62A15.41 15.41 0 0 0 39.39 216h177.5A15.13 15.13 0 0 0 232 200.89V88a16 16 0 0 0-16-16ZM40 56h52.69l16 16H40Z"/></svg>
-      查看界面预览
-    </a>
   </div>
 </section>
 
