@@ -142,10 +142,10 @@ section{width:100%;display:flex;flex-direction:column;align-items:center;padding
 .grid-2+.grid-2,.grid-3+.grid-3{margin-top:10px}
 
 /* ============ INTRO: IMAGE CAROUSEL + TAG + PILLS + PILL BTN (Hanzo order) ============ */
-.intro-carousel{width:100%;border-radius:var(--radius-md);overflow:hidden;margin-bottom:48px;position:relative;background:var(--surface)}
-.intro-carousel-track{display:flex;flex-direction:column;gap:24px;place-items:center;animation:scroll-up 24s linear infinite;will-change:transform}
-.intro-carousel-track .carousel-img-wrap{width:100%;border-radius:inherit;overflow:hidden;flex-shrink:0}
-.intro-carousel-track .carousel-img-wrap img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.intro-carousel{width:100%;max-width:1440px;border-radius:var(--radius-md);overflow:hidden;margin-bottom:48px;position:relative;background:var(--surface)}
+.intro-carousel-track{display:grid;grid-template-columns:1fr 1fr;gap:24px;animation:scroll-up 30s linear infinite;will-change:transform}
+.intro-carousel-track .carousel-img-wrap{border-radius:inherit;overflow:hidden}
+.intro-carousel-track .carousel-img-wrap img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;aspect-ratio:4/3}
 .intro-carousel:hover .intro-carousel-track{animation-play-state:paused}
 @keyframes scroll-up{0%{transform:translateY(0)}100%{transform:translateY(calc(-33.333% - 16px))}}
 
@@ -376,9 +376,9 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
 
 <!-- ====== INTRO (Hanzo order: carousel → tag → pills → pill-link-btn) ====== -->
 <section id="features">
-  <div class="sec-wrap">
+  <div class="sec-wrap-wide">
 
-    <!-- Image carousel (Hanzo exact: 6 images × 4 repeats, vertical column, gap:24px) -->
+    <!-- Image carousel (Hanzo: 2-column grid, 1440px wide, gap:24px) -->
     <div class="intro-carousel"><div class="intro-carousel-track">
       <div class="carousel-img-wrap"><img src="https://framerusercontent.com/images/670uUrkwoRnzhCl9b3kEMwUmgE4.jpg?width=1120&height=840" alt="" loading="lazy"></div>
       <div class="carousel-img-wrap"><img src="https://framerusercontent.com/images/J4Ox47KYv4g8Lb2C0PXNkjDaA.jpg?width=1120&height=840" alt="" loading="lazy"></div>
@@ -398,7 +398,11 @@ footer{border-top:1px solid var(--border);padding:80px 48px 36px;max-width:1440p
       <div class="carousel-img-wrap"><img src="https://framerusercontent.com/images/9nNEv94U4EwW3ZkcswuOBMt2jk.jpg?width=1120&height=840" alt="" loading="lazy"></div>
       <div class="carousel-img-wrap"><img src="https://framerusercontent.com/images/cpbJvQoTTkomFOd8RSNsHF3b8.jpg?width=1120&height=840" alt="" loading="lazy"></div>
       <div class="carousel-img-wrap"><img src="https://framerusercontent.com/images/TWgBR6dpy8VfcVcGIy2oyBYzyY.jpg?width=1120&height=840" alt="" loading="lazy"></div>
-    </div></div> + Heading (Hanzo: "Hello!" tag, then heading, then desc) -->
+    </div></div>
+  </div>
+  <div class="sec-wrap">
+
+    <!-- Tag + Heading (Hanzo: "Hello!" tag, then heading, then desc) -->
     <div class="sec-head" style="margin-bottom:48px">
       <div class="sec-tag"><em>Hello!</em></div>
       <h2>不止播放，更懂你</h2>
