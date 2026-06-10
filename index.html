@@ -77,7 +77,7 @@ h3{font:400 24px/1.3 "Inter Display","Inter","PingFang SC",sans-serif;letter-spa
 
 /* ============ NAV (Hanzo: floating, no title bar, wordmark pill) ============ */
 nav{position:fixed;top:20px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px}
-.logo{font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--text);background:var(--surface);border-radius:var(--radius-wordmark);padding:6px 16px 6px 12px;transition:background .2s;display:inline-flex;align-items:center;gap:8px}
+.logo{font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--text);background:var(--surface);border-radius:var(--radius-wordmark);padding:6px 14px;transition:background .2s;display:inline-flex;align-items:center;gap:6px}
 .logo:hover{background:var(--surface-hover)}
 .logo span{font-weight:400;color:var(--accent)}
 
@@ -413,7 +413,7 @@ footer>*{position:relative;z-index:1}
 <!-- ====== HERO (Hanzo: slideshow + heading + ticker + desc + CTA) ====== -->
 <section class="hero" id="hero">
   <div class="hero-content">
-    <div class="badge-red"><span class="dot"></span> Active Development · Windows 10 / 11</div>
+    <div class="badge-red"><span class="dot"></span> In Active Development · Windows 10+</div>
 
     <div class="hero-heading" aria-label="你的私人观影助手">
       <span>你的私人</span>
@@ -565,11 +565,11 @@ footer>*{position:relative;z-index:1}
   <div class="sec-wrap-wide">
     <div class="sec-head"><div class="sec-tag"><em>Our Projects</em></div><h2>界面预览</h2><p class="desc">浅色 / 深色双主题，液态玻璃质感。媒体库、发现、推荐、统计，一站完成。</p></div>
     <div class="grid-2">
-      <div class="shot fade-up"><div class="shot-img"><img src="assets/home.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">首页 · 仪表盘</div><div class="cap-tag">Home · Dashboard</div></div></div>
-      <div class="shot fade-up"><div class="shot-img"><img src="assets/library.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">媒体库 · 影视墙</div><div class="cap-tag">Library · Media Wall</div></div></div>
+      <div class="shot fade-up"><div class="shot-img"><img src="assets/home.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">首页 · 仪表盘</div><div class="cap-tag">Dashboard</div></div></div>
+      <div class="shot fade-up"><div class="shot-img"><img src="assets/library.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">媒体库 · 影视墙</div><div class="cap-tag">Media Wall</div></div></div>
     </div>
     <div class="grid-2">
-      <div class="shot fade-up"><div class="shot-img"><img src="assets/discovery.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">发现 · 榜单</div><div class="cap-tag">Discovery · Rankings</div></div></div>
+      <div class="shot fade-up"><div class="shot-img"><img src="assets/discovery.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">发现 · 榜单</div><div class="cap-tag">Discovery</div></div></div>
       <div class="shot fade-up"><div class="shot-img"><img src="assets/insights.png" alt="" loading="lazy"></div><div class="shot-cap"><div class="cap-title">AI 推荐</div><div class="cap-tag">AI Recommendations</div></div></div>
     </div>
   </div>
@@ -601,10 +601,10 @@ footer>*{position:relative;z-index:1}
         <div class="about-icon"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M216 72h-84.69L104 44.69A15.88 15.88 0 0 0 92.69 40H40a16 16 0 0 0-16 16v144.62A15.41 15.41 0 0 0 39.39 216h177.5A15.13 15.13 0 0 0 232 200.89V88a16 16 0 0 0-16-16ZM40 56h52.69l16 16H40Z"/></svg></div>
         <p class="about-bio">本地优先的智能观影发现平台。整合媒体库管理、元数据搜刮、观影统计与 AI 推荐——让私人片库，从「存着」变成「懂你」。</p>
         <div class="about-experience">
-          <div class="about-exp-item"><span class="exp-role">Open Source Project</span><span class="exp-company">XFVerse · .NET 8 + WPF 桌面应用</span><span class="exp-date">2026 → Now</span></div>
-          <div class="about-exp-item"><span class="exp-role">AI Recommendation</span><span class="exp-company">23 种观影人格 · 6 维观影 DNA · 三路推荐策略</span><span class="exp-date">Core</span></div>
-          <div class="about-exp-item"><span class="exp-role">Local-first Storage</span><span class="exp-company">SQLite 本地数据库 · 核心观影数据不上传</span><span class="exp-date">Privacy</span></div>
-          <div class="about-exp-item"><span class="exp-role">Player &amp; Sources</span><span class="exp-company">mpv 内核 · 本地文件夹 · WebDAV 远程片库</span><span class="exp-date">Media</span></div>
+          <div class="about-exp-item"><span class="exp-role">Core Platform</span><span class="exp-company">XFVerse · .NET 8 + WPF desktop app</span><span class="exp-date">2026 → Now</span></div>
+          <div class="about-exp-item"><span class="exp-role">AI Engine</span><span class="exp-company">23 personas · 6-dimension DNA · 3-way recommendation</span><span class="exp-date">Core</span></div>
+          <div class="about-exp-item"><span class="exp-role">Local-first</span><span class="exp-company">SQLite database · your data stays on your device</span><span class="exp-date">Privacy</span></div>
+          <div class="about-exp-item"><span class="exp-role">Playback</span><span class="exp-company">mpv-powered · local folders · WebDAV remote</span><span class="exp-date">Media</span></div>
         </div>
       </div>
     </div>
@@ -660,7 +660,7 @@ footer>*{position:relative;z-index:1}
 <!-- ====== FOOTER (Hanzo: CTA + social + wordmark + copyright) ====== -->
 <footer>
   <div class="footer-cta">
-    <div class="badge-mono">Available Now · Open Source</div>
+    <div class="badge-mono">Free &amp; Open Source</div>
     <h2>开始使用<br>XFVerse</h2>
     <p class="desc" style="max-width:480px">从「存着」到「懂你」。免费下载，即刻开始。</p>
     <a href="#download" class="btn btn-primary btn-lg" style="margin-top:4px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> 免费下载</a>
