@@ -432,7 +432,8 @@ footer>*{position:relative;z-index:1}
 .docs-content{grid-area:1 / 1;justify-self:center;width:min(var(--docs-content-width),calc(100vw - var(--docs-gutter) * 2));min-width:0;max-width:var(--docs-content-width)}
 .docs-content section{padding:52px 40px;margin-bottom:60px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);box-shadow:0 4px 24px rgba(0,0,0,.04)}
 .docs-content section h2{text-align:left;width:100%}
-.docs-content section p,.docs-content section li{text-align:left}
+.docs-content section p,.docs-content section li,.docs-content section ul,.docs-content section ol{text-align:left;width:100%}
+.docs-content section .docs-note{text-align:left;width:100%}
 .docs-content section:first-of-type{border-top:1px solid var(--border);padding-top:52px}
 .docs-content h2{font:400 34px/1.2 "Inter Display","Inter","PingFang SC",sans-serif;margin:0 0 24px;letter-spacing:-.03em;color:var(--text)}
 
@@ -553,7 +554,7 @@ footer>*{position:relative;z-index:1}
       <a href="#series-naming">识别与命名</a>
       <a href="#series-browse">剧集浏览</a>
       <a href="#series-progress">进度与同步</a>
-      <a href="#series-updates">更新与提醒</a>
+      <a href="#series-updates">数据刷新</a>
     </div>
     <a href="#library" class="docs-nav-parent">媒体库管理</a>
     <div class="docs-nav-children">
@@ -676,12 +677,12 @@ S02E05  → 第 2 季第 5 集
         <li>播放超过 90% 自动标记为「已看」</li>
         <li>可在剧集详情页手动切换「已看/未看」状态</li>
       </ul>
-      <h3 id=”series-updates”>更新监控与提醒</h3>
-      <p>对于正在追更的剧集，开启更新监控后，软件会在下次扫描时检测新增集数：</p>
+      <h3 id=”series-updates”>数据刷新</h3>
+      <p>重新扫描目录时，系统会自动检测新增的集数和文件：</p>
       <ul>
-        <li>发现新集后自动加入媒体库并标记为「未看」</li>
-        <li>在发现页显示更新提示角标</li>
-        <li>支持批量标记整季为已看</li>
+        <li>新发现的集数自动加入媒体库并标记为「未看」</li>
+        <li>已存在的影片不会重复添加，仅更新元数据（如有变化）</li>
+        <li>支持手动触发单个目录的重新扫描</li>
       </ul>
     </section>
 
